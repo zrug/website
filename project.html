@@ -1,0 +1,77 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<title>ZPZChina</title>
+
+<link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="css/reset.css" type="text/css" />
+<!--[if lt IE 9 ]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]--> 
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/modernizr.custom.min.js"></script>
+<script src="js/global.js"></script>
+<script src="js/userValidate.js"></script>
+<style>
+	body {
+		background-image:url(images/zpzbg01.png);
+		background-repeat:no-repeat;
+		background-color:#fff;
+		min-width:1120px;
+	}
+	.wrapper {width:1320px; height:750px; margin:0 auto; position:relative; background:transparent; border:0px solid purple;}
+
+	.menu {position:absolute; top:350px; left:130px; width:1000px;}
+	a {text-decoration:none;}
+	dl {float:left; width:225px; padding:150px 20px 0px 40px; margin-right:40px; height:120px;
+		text-shadow:-1px -1px #888;}
+	dl.last {margin-right:0px;}
+	dt {font-size:20px; color:white; line-height:30px; padding-left:40px;}
+	dd {font-size:14px; color:white; width:250px; padding-left:40px; line-height:18px;}
+	.newProject {background: url(images/menu_project_new.png) no-repeat 20px 150px;}
+	.allProject {background: url(images/menu_project_all.png) no-repeat 20px 150px;}
+	.myProject  {background: url(images/menu_project_my.png) no-repeat 20px 150px;}
+	.newProject:hover {background: url(images/menu_project_new.png) no-repeat 20px 150px, 
+								url(images/menu_project_hover.png) no-repeat -0px -10px;}
+	.allProject:hover {background: url(images/menu_project_all.png) no-repeat 20px 150px, 
+								url(images/menu_project_hover.png) no-repeat -0px -10px;}
+	.myProject:hover {background: url(images/menu_project_my.png) no-repeat 20px 150px, 
+								url(images/menu_project_hover.png) no-repeat -0px -10px;}
+</style>
+</head>
+<body> 
+	<div class="wrapper">
+    <div class="menu" > 
+         
+        <a href="modiProject.html?newProject=1">
+			<dl class="newProject">
+				<dt>新建项目</dt>
+				<dd>项目资料和信息的录入</dd>
+				<dd>维护系统信息内容</dd>
+			</dl>
+		</a>
+
+		<a href="allProject.html">
+			<dl class="allProject">
+				<dt >全部项目</dt>
+				<dd>项目资料和信息的展示</dd>
+				<dd>集聚了所有项目的总和</dd>
+			</dl>
+		</a>
+
+		<a href="#">
+			<dl class="myProject last">
+				<dt>我的任务</dt>
+				<dd>分派给我需要完成的任务</dd>
+				<dd>曾经发布过的信息</dd>
+			</dl>
+		</a>
+	</div>
+	</div>
+</body>
+</html>

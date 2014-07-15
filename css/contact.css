@@ -1,0 +1,42 @@
+
+.contact-section {width:500px; height:280px; border-radius:10px; box-shadow:0px 0px 30px #333; font-size:14px;
+    position:absolute; top:400px; left:260px; margin:0 auto; background:#f8f8f8; padding:40px 60px 45px 60px; display:none;}
+.contact-section fieldset {border:0; margin:0; padding:0; min-height:40px;}
+.contact-section-title {height:75px;}
+.contact-section label {float:left; width:85px; padding-top:0.4em; font-size:13px;}
+.contact-section input, .contact-section textarea {font-size:14px; border:1px solid #c4c4c4; border-radius:4px; padding:0px 6px;}
+.contact-section input {height:22px;}
+.contact-section select {font-size:14px; border:1px solid #c4c4c4; border-radius:3px; background:#fff;}
+.contact-section textarea {margin-bottom:12px;}
+.contact-section .colone {width:100px;}
+.contact-section .coltwo {width:200px;}
+.contact-section .colthree {width:300px;}
+.contact-section .colfour {width:400px;}
+.contact-section .colfive {width:500px;}
+.content-sections select.colone {width:104px;}
+.content-sections select.coltwo {width:156px;}
+.content-sections select.colthree {width:208px;}
+.contact-section .right {float:right;}
+.contact-section .left {float:left;}
+.contact-section .error {border-color:red; background-color:#FEE;}
+
+#contact-section-ok {position:absolute; left:200px; bottom:35px; height:31px; width:93px; cursor:pointer;
+    background:url(../images/btn93x31_light.png) no-repeat; border:0px; padding:0; margin:0; text-align:center;
+    line-height:30px; font-size:16px; color:#fff; cursor:pointer; }
+#contact-section-cancel {position:absolute; right:200px; bottom:35px; height:31px; width:93px; cursor:pointer;
+    background:url(../images/btn93x31_gray_light.png) no-repeat; border:0px; padding:0; margin:0; text-align:center;
+    line-height:30px; font-size:16px; color:#fff; cursor:pointer; }
+
+.contact-card {border:1px solid #c4c4c4; width:200px; height:110px; border-radius:8px; float:left;
+    margin-right:20px; background:#fff; padding:0px 10px 20px 10px; cursor:pointer;}
+.contact-card fieldset {border-bottom:1px solid #bbb; margin:0; padding:8px 0px; min-height:25px; margin:0px;}
+.contact-card fieldset.last {border-bottom:0px;}
+.contact-card label {float:left; width:50px; padding-top:0.4em; cursor:pointer; position:relative; padding-left:5px;}
+.contact-card input, .contact-card textarea {font-size:14px; border:0px; padding:0px 6px; cursor:pointer;}
+.contact-card input {height:22px;}
+.contact-card textarea {margin-bottom:12px;}
+.contact-card .colone {width:130px;}
+.contact-card .coltwo {width:190px;}
+.contact-card .error {border-color:red; background-color:#FEE;}
+.contact-card.empty {background:#fff url(../images/add_contact.jpg) no-repeat 50% 50%;}
+.contact-card .duties-img {top:3px; position:absolute; left:42px;}

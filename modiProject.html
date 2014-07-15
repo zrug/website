@@ -1,0 +1,645 @@
+﻿<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<title>ZPZChina</title>
+
+<link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="css/reset.css" type="text/css" />
+<link rel="stylesheet" href="css/structor.css" type="text/css" />
+<link rel="stylesheet" href="css/jquery-ui.min.css">
+<link rel="stylesheet" href="css/tagSele.css" type="text/css" />
+<link rel="stylesheet" href="css/poping.css" type="text/css" />
+<link rel="stylesheet" href="css/project.css" type="text/css" />
+<link rel="stylesheet" href="css/contact.css" type="text/css" />
+<link rel="stylesheet" href="css/photo.css" type="text/css" />
+
+<!--[if lt IE 9 ]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]--> 
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/modernizr.custom.min.js"></script>
+<script src="js/bpopup.js"></script>
+<script src="js/global.js"></script>
+<script src="js/jquery.tagSele.js"></script>
+<script src="js/projectSwitchProgress.js"></script>
+<script src="js/stateSelector.js"></script>
+<script src="js/poping.js"></script>
+
+<script src="js/contact.js"></script>
+<script src="js/photo.js"></script>
+<script src="js/project.js"></script>
+
+<script type="text/javascript">
+$(function () {
+    if (global.QueryString.newProject != "1") {
+        project.modify();
+    } else {
+        console.log('new ing project');
+    }
+    console.log('user: ' + $.cookie('userID') + ' token: ' + ($.cookie('token') ? '(c)'+$.cookie('token') : '(o)'+global.test_token) );
+});
+</script>
+
+<style>
+</style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="nav">
+            <a href="modiProject.html?newProject=1">新建项目</a>
+            <a href="allProject.html">全部项目</a>
+            <a href="#">我的项目</a>
+        </div>
+        <div class="logo" onclick="location.href='project.html'">
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar-body">
+            </div>
+            <div class="progress-bar-label stage1 stages-name">
+                <a class="page-trigger append_ProjectId" index="1">土地信息阶段</a>
+            </div>
+            <div class="progress-bar-label stage2 stages-name">
+                <a class="page-trigger append_ProjectId" index="2">主体设计阶段</a>
+            </div>
+            <div class="progress-bar-label stage3 stages-name">
+                <a class="page-trigger append_ProjectId" index="3">主体施工阶段</a>
+            </div>
+            <div class="progress-bar-label stage4 stages-name">
+                <a class="page-trigger append_ProjectId" index="4">装修阶段</a>
+            </div>
+            <div class="progress-bar-number stage1 stages-code">1</div>
+            <div class="progress-bar-number stage2 stages-code">2</div>
+            <div class="progress-bar-number stage3 stages-code">3</div>
+            <div class="progress-bar-number stage4 stages-code">4</div>
+            <div class="progress-start field-expectedStartTime field progress-time" fieldId="expectedStartTime" twins="expectedStartTime" valuetype="date">
+                -
+            </div>
+            <div class="progress-end field-expectedFinishTime field progress-time" fieldId="expectedFinishTime" twins="expectedFinishTime" valuetype="date">
+                -
+            </div>
+        </div>
+
+        <div class="page-wrapper page-wrapper-1">
+
+            <div class="sheet">
+                <ul>
+                    <li class="active content-trigger" ref=".content-section1" page="page1">
+                        土地规划/拍卖<!-- &nbsp;
+                        <span class="red">[必填]</span> -->
+                    </li>
+                    <li class="content-trigger" ref=".content-section2" page="page1">
+                        项目立项<!-- &nbsp;
+                        <span class="red">[必填]</span> -->
+                    </li>
+                </ul>
+            </div>
+            <div class="content">
+                <div class="content-sections content-section1 page1">
+                    
+                    <fieldset>
+                    <label for="landName">地块名称：</label>
+                    <input type="text" fieldId="landName" class="field-landName field colthree" valuetype="string" />
+                    </fieldset>
+
+                    <fieldset>
+                    <label>所在省市：</label>
+                    <select id="district" fieldId="district" class="field-district field colone gray" valuetype="string">
+                    </select>
+                    <select id="province" fieldId="province" class="field-province field colone gray" valuetype="string">
+                    </select>
+                    <select id="city" fieldId="city" class="field-city field colone gray" valuetype="string">
+                    </select>
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="landAddress">地块地址：</label>
+                    <div class="input-append">
+                        <span><input type="text" fieldId="landAddress" class="field-landAddress field colthree" twins="landAddress" valuetype="string" />
+                        </span>
+                        <span class="add-on"><i class="icon icon-baidumap"></i></span>
+                    </div>
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="area">土地面积：</label>
+                    <input type="text" fieldId="area" class="field-area field colone" valuetype="number" /> <span class="label">平方米</span>
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="plotRatio">土地容积率：</label>
+                    <input type="text" fieldId="plotRatio" class="field-plotRatio field colone" valuetype="number" /> <span class="label">%</span>
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="usage" class="rowtwo">地块用途：</label>
+                    <select fieldId="usage" multiple="multiple" class="field-usage field tagSele" valuetype="string">
+                        <option>工业</option>
+                        <option>酒店及餐饮</option>
+                        <option>商务办公</option>
+                        <option>住宅/经济适用房</option>
+                        <option>公用事业设施（教育、医疗、科研、基础建设等）</option>
+                        <option>其他</option>
+                    </select>
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="contacts" class="blue">拍卖单位联系人：</label>
+                    <div class="contacts" id="auctionUnitContacts"></div>
+                    <div class="clear"></div>
+                    </fieldset>
+
+                </div>
+                <div class="content-sections hide content-section2 page1">
+
+                    <fieldset>
+                    <label for="projectName">项目名称：</label>
+                    <input type="text" fieldId="projectName" class="field-projectName field colthree" valuetype="string" /> 
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="landAddress">项目地址：</label>
+                    <input type="text" fieldId="landAddress" class="field-landAddress field colthree" twins="landAddress" valuetype="string" />
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="description">项目描述：</label>
+                    <textarea fieldId="description" class="field-description field colfive" rows="4" valuetype="string"></textarea>
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="contacts" class="blue">业主单位联系人：</label>
+                    <div class="contacts" id="ownerUnitContacts"></div>
+                    <div class="clear"></div>
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="expectedStartTime">预计开工时间：</label>
+                    <div class="input-append">
+                        <span><input type="text" fieldId="expectedStartTime" class="field-expectedStartTime field colone datepicker" placeholder="年-月-日" valuetype="date" twins="expectedStartTime" /></span>
+                        <span class="add-on"><i class="icon icon-calendar"></i></span>
+                    </div>
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="expectedFinishTime">预计竣工时间：</label>
+                    <div class="input-append">
+                        <span><input type="text" fieldId="expectedFinishTime" class="field-expectedFinishTime field colone datepicker" twins="expectedFinishTime" placeholder="年-月-日" valuetype="date" /></span>
+                        <span class="add-on"><i class="icon icon-calendar"></i></span>
+                    </div>
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="investment">投资额：</label>
+                    <input type="text" fieldId="investment" class="field-investment field colone" valuetype="number" />
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="areaOfStructure">建筑面积：</label>
+                    <input type="text" fieldId="areaOfStructure" class="field-areaOfStructure field colone" valuetype="number" />
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="storeyHeight">建筑层高：</label>
+                    <input type="text" fieldId="storeyHeight" class="field-storeyHeight field colone" valuetype="number" />
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="storeyHeight">外资参与：</label>
+                    <select name="fiut" fieldId="foreignInvestment" class="field-foreignInvestment field tagSele" valuetype="bool">
+                        <option value="0">未参与</option>
+                        <option value="1">已参与</option>
+                    </select>
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="ownerType">业主类型：</label>
+                    <select fieldId="ownerType" multiple="multiple" class="field-ownerType field tagSele" valuetype="string">
+                        <option>外商独资</option>
+                        <option>中外合资</option>
+                        <option>私人企业</option>
+                        <option>政府机关</option>
+                        <option>国有企业</option>
+                        <option>其他</option>
+                    </select>
+                    </fieldset>
+
+                </div>
+            </div>
+            <div class="functions">
+                <div class="topline"></div>
+                <div class="buttons">
+                    <div class="btn-save active button">发布</div>
+                </div>
+            </div>
+            <div class="tips">
+                <p class="title">使用说明：</p>
+                <p class="text"></p>
+            </div>
+        </div>
+
+        <div class="page-wrapper page-wrapper-2">
+            
+            <div class="sheet">
+                <ul>
+                    <li class="content-trigger active" ref=".content-section1" page="page2">
+                        地堪阶段
+                    </li>
+                    <li class="content-trigger" ref=".content-section2" page="page2">
+                        设计阶段
+                    </li>
+                    <li class="content-trigger" ref=".content-section3" page="page2">
+                        出图阶段
+                    </li>
+                </ul>
+            </div>
+            <div class="content">
+
+                <div class="content-sections content-section1 page2">
+
+                    <fieldset>
+                    <label for="contacts" class="blue">地堪公司联系人：</label>
+                    <div class="contacts" id="explorationUnitContacts"></div>
+                    <div class="clear"></div>
+                    </fieldset>
+
+                    <fieldset class="dragtrigger">
+                    <a class="attach" for="exploration">
+                        <b class="cmps" ref="exploration"></b>图片上传
+                        <input type="file" class="hide" size="1" multiple="multiple" ref="exploration" />
+                    </a>
+                    <span class="photos-desc">请上传200K以内，JPG格式图片</span>
+                    <div class="photos" fieldId="exploration">
+                    </div>
+                    <div class="holder" ref="exploration">
+                        请拖拽图片文件至此处
+                    </div>
+                    </fieldset>
+
+                </div>
+                <div class="content-sections hide content-section2 page2">
+
+                    <fieldset>
+                    <label for="contacts" class="blue">设计单位联系人：</label>
+                    <div class="contacts" id="designInstituteContacts"></div>
+                    <div class="clear"></div>
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="mainDesignStage">主体设计阶段：</label>
+                    <select fieldId="mainDesignStage" class="field-mainDesignStage field tagSele" valuetype="string">
+                        <option>结构</option>
+                        <option>立面</option>
+                        <option>幕墙</option>
+                        <option>暖通</option>
+                        <option>扩初</option>
+                        <option>蓝图</option>
+                        <option>送审</option>
+                        <option>审结</option>
+                    </select>
+                    </fieldset>
+
+                </div>
+                <div class="content-sections hide content-section3 page2">
+
+                    <fieldset>
+                    <label for="expectedConstructionTime">预计施工时间：</label>
+                    <input type="text" fieldId="expectedConstructionTime" class="field-expectedConstructionTime field colone datepicker" valuetype="date" placeholder="yyyy-mm-dd" />
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="expectedFinishTime">预计竣工时间：</label>
+                    <input type="text" fieldId="expectedFinishTime" class="field-expectedFinishTime field colone datepicker" twins="expectedFinishTime" valuetype="date" placeholder="yyyy-mm-dd" />
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="propertyElevator">电梯：</label>
+                    <select fieldId="propertyElevator" class="field-propertyElevator field tagSele" valuetype="bool">
+                        <option value="0">NO</option>
+                        <option value="1">YES</option>
+                    </select>
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="propertyAirCondition">空调：</label>
+                    <select fieldId="propertyAirCondition" class="field-propertyAirCondition field tagSele" valuetype="bool">
+                        <option value="0">NO</option>
+                        <option value="1">YES</option>
+                    </select>
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="propertyHeating">供暖方式：</label>
+                    <select fieldId="propertyHeating" class="field-propertyHeating field tagSele" valuetype="bool">
+                        <option value="0">NO</option>
+                        <option value="1">YES</option>
+                    </select>
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="propertyExternalWallMeterial">外墙材料：</label>
+                    <select fieldId="propertyExternalWallMeterial" class="field-propertyExternalWallMeterial field tagSele" valuetype="bool">
+                        <option value="0">NO</option>
+                        <option value="1">YES</option>
+                    </select>
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="propertyStealStructure">钢结构：</label>
+                    <select fieldId="propertyStealStructure" class="field-propertyStealStructure field tagSele" valuetype="bool">
+                        <option value="0">NO</option>
+                        <option value="1">YES</option>
+                    </select>
+                    </fieldset>
+
+                </div>
+            </div>
+            <div class="functions">
+                <div class="topline"></div>
+                <div class="buttons">
+                    <div class="btn-save active button">发布</div>
+                </div>
+            </div>
+            <div class="tips">
+                <p class="title">使用说明：</p>
+                <p class="text"></p>
+            </div>
+        </div>
+
+        <div class="page-wrapper page-wrapper-3">
+            
+            <div class="sheet">
+                <ul>
+                    <li class="active content-trigger" ref=".content-section1" page="page3">
+                        地平
+                    </li>
+                    <li class="content-trigger" ref=".content-section2" page="page3">
+                        桩基基坑
+                    </li>
+                    <li class="content-trigger" ref=".content-section3" page="page3">
+                        主体施工
+                    </li>
+                    <li class="content-trigger" ref=".content-section4" page="page3">
+                        消防、景观绿化
+                    </li>
+                </ul>
+            </div>
+            <div class="content">
+
+                <div class="content-sections content-section1 page3">
+
+                    <fieldset>
+                    <label for="actualStartTime">实际开工时间：</label>
+                    <input type="text" fieldId="actualStartTime" class="field-actualStartTime field colone datepicker" valuetype="date" placeholder="yyyy-mm-dd" />
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="contractorUnitContacts" class="blue">施工总承包：</label>
+                    <div class="contacts" id="contractorUnitContacts"></div>
+                    <div class="clear"></div>
+                    </fieldset>
+
+                    <fieldset class="dragtrigger">
+                    <a class="attach" for="horizon">
+                        <b class="cmps" ref="horizon"></b>图片上传
+                        <input type="file" class="hide" size="1" multiple="multiple" ref="horizon" />
+                    </a>
+                    <span class="photos-desc">请上传200K以内，JPG格式图片</span>
+                    <div class="photos" fieldId="horizon">
+                    </div>
+                    <div class="holder" ref="horizon">
+                        请拖拽图片文件至此处
+                    </div>
+                    </fieldset>
+
+                </div>
+                <div class="content-sections hide content-section2 page3">
+                    
+                    <fieldset>
+                    <label for="pileFoundationUnitContacts" class="blue">桩基分包：</label>
+                    <div class="contacts" id="pileFoundationUnitContacts"></div>
+                    <div class="clear"></div>
+                    </fieldset>
+                    
+                    <fieldset class="dragtrigger">
+                    <a class="attach" for="pileFoundation">
+                        <b class="cmps" ref="pileFoundation"></b>图片上传
+                        <input type="file" class="hide" size="1" multiple="multiple" ref="pileFoundation" />
+                    </a>
+                    <span class="photos-desc">请上传200K以内，JPG格式图片</span>
+                    <div class="photos" fieldId="pileFoundation">
+                    </div>
+                    <div class="holder" ref="pileFoundation">
+                        请拖拽图片文件至此处
+                    </div>
+                    </fieldset>
+
+                </div>
+                <div class="content-sections hide content-section3 page3">
+                    
+                    <fieldset class="dragtrigger">
+                    <a class="attach" for="mainPart">
+                        <b class="cmps" ref="mainPart"></b>图片上传
+                        <input type="file" class="hide" size="1" multiple="multiple" ref="mainPart" />
+                    </a>
+                    <span class="photos-desc">请上传200K以内，JPG格式图片</span>
+                    <div class="photos" fieldId="mainPart">
+                    </div>
+                    <div class="holder" ref="mainPart">
+                        请拖拽图片文件至此处
+                    </div>
+                    </fieldset>
+
+                </div>
+                <div class="content-sections hide content-section4 page3">
+
+                    <fieldset>
+                    <label for="fireControl">消防</label>
+                    <select fieldId="fireControl" class="field-fireControl field tagSele" valuetype="string">
+                        <option>招标</option>
+                        <option>正在施工</option>
+                        <option>施工完成</option>
+                    </select>
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="green">景观绿化</label>
+                    <select fieldId="green" class="field-green field tagSele" valuetype="string">
+                        <option>招标</option>
+                        <option>正在施工</option>
+                        <option>施工完成</option>
+                    </select>
+                    </fieldset>
+
+                    <fieldset class="dragtrigger">
+                    <a class="attach" for="fireControl">
+                        <b class="cmps" ref="fireControl"></b>图片上传
+                        <input type="file" class="hide" size="1" multiple="multiple" ref="fireControl" />
+                    </a>
+                    <span class="photos-desc">请上传200K以内，JPG格式图片</span>
+                    <div class="photos" fieldId="fireControl">
+                    </div>
+                    <div class="holder" ref="fireControl">
+                        请拖拽图片文件至此处
+                    </div>
+                    </fieldset>
+
+                </div>
+            </div>
+            <div class="functions">
+                <div class="topline"></div>
+                <div class="buttons">
+                    <div class="btn-save active button">发布</div>
+                </div>
+            </div>
+            <div class="tips">
+                <p class="title">使用说明：</p>
+                <p class="text"></p>
+            </div>
+        </div>
+
+        <div class="page-wrapper page-wrapper-4">
+            
+            <div class="sheet">
+                <ul>
+                    <li class="active content-trigger" ref=".content-section1" page="page4">
+                        弱电安装
+                    </li>
+                    <li class="content-trigger" ref=".content-section2" page="page4">
+                        装修情况
+                    </li>
+                    <li class="content-trigger" ref=".content-section3" page="page4">
+                        装修进度
+                    </li>
+                </ul>
+            </div>
+            <div class="tips">
+                <p class="title">使用说明：</p>
+                <p class="text"></p>
+            </div>
+            <div class="content">
+
+                <div class="content-sections content-section1 page4">
+
+                    <fieldset>
+                    <label for="electroweakInstallation">弱电安装</label>
+                    <select fieldId="electroweakInstallation" class="field-electroweakInstallation field tagSele" valuetype="string">
+                        <option>招标</option>
+                        <option>正在施工</option>
+                        <option>施工完成</option>
+                    </select>
+                    </fieldset>
+
+                    <fieldset class="dragtrigger">
+                    <a class="attach" for="electroweak">
+                        <b class="cmps" ref="electroweak"></b>图片上传
+                        <input type="file" class="hide" size="1" multiple="multiple" ref="electroweak" />
+                    </a>
+                    <span class="photos-desc">请上传200K以内，JPG格式图片</span>
+                    <div class="photos" fieldId="electroweak">
+                    </div>
+                    <div class="holder" ref="electroweak">
+                        请拖拽图片文件至此处
+                    </div>
+                    </fieldset>
+
+                </div>
+                <div class="content-sections hide content-section2 page4">
+
+                    <fieldset>
+                    <label for="decorationSituation">装修情况</label>
+                    <select fieldId="decorationSituation" class="field-decorationSituation field tagSele" valuetype="string">
+                        <option>无装修</option>
+                        <option>简单全装修</option>
+                        <option>部分装修</option>
+                        <option>精装修</option>
+                    </select>
+                    </fieldset>
+
+                </div>
+                <div class="content-sections hide content-section3 page4">
+
+                    <fieldset>
+                    <label for="decorationProgress">装修进度</label>
+                    <select fieldId="decorationProgress" class="field-decorationProgress field tagSele" valuetype="string">
+                        <option>招标</option>
+                        <option>正在施工</option>
+                        <option>施工完成</option>
+                    </select>
+                    </fieldset>
+
+                </div>
+            </div>
+            <div class="functions">
+                <div class="topline"></div>
+                <div class="buttons">
+                    <div class="btn-save active button">发布</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+        </div>
+
+
+        <div class="contact-section">
+            <input type="hidden" id="category" value="" />
+            <input type="hidden" id="projectID" value="" />
+            <input type="hidden" id="project" value="" />
+            <input type="hidden" id="index" value="" />
+            <fieldset class="contact-section-title">
+                <p class="center"><img src="images/contact_head.png" width="35"></p>
+            </fieldset>
+
+            <fieldset class="left">
+                <label for="name">联系人姓名：</label>
+                <input type="text" id="name" class="colone" value="" placeholder="" />
+            </fieldset>
+
+            <fieldset class="right">
+                <label for="">担任职务：</label>
+                <select id="duties" class="coltwo">
+                    <option value="吃饭的">吃饭的</option>
+                    <option value="洗澡的">洗澡的</option>
+                    <option value="画图的">画图的</option>
+                    <option value="搬砖的">搬砖的</option>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <label for="telephone">联系方式：</label>
+                <input type="text" id="telephone" class="colfour" value="" placeholder="" />
+            </fieldset>
+
+            <fieldset>
+                <label for="">工作单位：</label>
+                <input type="text" id="workAt" class="colfour" value="" placeholder="" />
+            </fieldset>
+
+            <fieldset>
+                <label for="">单位地址：</label>
+                <input type="text" id="workAddress" class="colfour" value="" placeholder="" />
+            </fieldset>
+            <div>
+                <button id="contact-section-ok" class="close">确定</button>
+                <button id="contact-section-cancel" class="close">关闭</button>
+            </div>
+        </div>
+
+        <div class="photo-section">
+        </div>
+<!--         <div class="message-bar">
+            <p class="content"></p>
+        </div>
+ -->
+    </div>
+
+</body>
+</html>

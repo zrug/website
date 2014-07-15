@@ -1,0 +1,426 @@
+body {
+	background: #F0EEEE url(../images/zpzbg02.png) no-repeat 50% 0%; 
+	
+	font-family: Verdana, Tahoma, Sans-serif;
+}
+fieldset {
+	position: relative;
+}
+
+.wrapper {
+	position: relative; 
+	width: 1077px; 
+	margin: 0 auto; 
+	font-size: 14px;
+}
+
+.nav {
+	position: absolute; 
+	top: 10px; 
+	left: 0px;
+}
+.nav a {
+	text-decoration: none; 
+	font-size: 18px; 
+	color: #fff; 
+	margin: 0 30px 0 0;
+}
+
+.logo {
+	position: absolute; 
+	top: 10px; 
+	right: 0px; 
+	background: url(../images/zpzlogo02.png) no-repeat;
+	width: 335px; 
+	height: 47px; 
+	cursor: pointer;
+}
+.field {
+	font-size: 14px; 
+	border: 1px solid #c4c4c4; 
+	border-radius: 4px; 
+	padding: 0px 6px 0px 12px; 
+	color: #000;
+}
+
+.page-wrapper {
+	position: relative; 
+	margin-top: 36px; 
+	left: 0px; 
+	width: 1031px; 
+	padding: 116px 23px 20px 23px; 
+	background: #fff;
+	box-shadow: 0px 0px 6px #c4c4c4;
+}
+.sheet     {
+	width: 191px; 
+	height: 450px; 
+	float: left;
+}
+.content   {
+	width: 839px; 
+	height: auto; 
+	margin: 0px 0px 0px 191px; 
+	min-height: 600px; 
+	background: #F9F9F9;
+}
+.functions {
+	width: 839px; 
+	height: 90px; 
+	margin: 0px 0px 0px 191px; 
+	background: #F9F9F9; 
+	position: relative;
+}
+.tips      {
+	width: 154px; 
+	height: 370px; 
+	position: absolute; 
+	bottom: 20px; 
+	left: 20px;
+    border: 1px solid #c4c4c4; 
+	border-radius: 8px; 
+	padding: 10px;
+}
+.progress  {
+	width: 1000px; 
+	height: 80px; 
+	position: relative; 
+	top: 136px; 
+	z-index: 999;
+}
+.footer {
+	height: 20px; 
+	position: relative;
+}
+
+.page-trigger {
+	cursor: pointer;
+}
+
+.progress-bar-body {
+	position: absolute; 
+	width: 780px; 
+	height: 8px; 
+	left: 130px; 
+	top: 47px;
+}
+.progress-bar-body.percent0 {
+	background: url(../images/progress_section1.png) no-repeat;
+}
+.progress-bar-body.percent20 {
+	background: url(../images/progress_section2.png) no-repeat;
+}
+.progress-bar-body.percent40 {
+	background: url(../images/progress_section3.png) no-repeat;
+}
+.progress-bar-body.percent60 {
+	background: url(../images/progress_section4.png) no-repeat;
+}
+.progress-bar-body.percent80 {
+	background: url(../images/progress_section5.png) no-repeat;
+}
+.progress-bar-number {
+	position: absolute; 
+	width: 27px; 
+	height: 27px; 
+	top: 35px;
+     background: url(../images/project_number.png) no-repeat; 
+	line-height: 29px; 
+	text-align: center;
+}
+.progress-bar-number.stage1 {
+	left: 260px;
+}
+.progress-bar-number.stage2 {
+	left: 430px;
+}
+.progress-bar-number.stage3 {
+	left: 600px;
+}
+.progress-bar-number.stage4 {
+	left: 770px;
+}
+.progress-bar-label {
+	position: absolute; 
+	width: 180px; 
+	height: 26px; 
+	top: 5px; 
+	line-height: 24px; 
+	text-align: center;
+}
+.progress-bar-label a {
+	color: #888888; 
+	font-family: Verdana, Tahoma, Sans-serif; 
+	text-decoration: none;
+}
+.progress-bar-label.stage1 {
+	left: 185px;
+}
+.progress-bar-label.stage2 {
+	left: 355px;
+}
+.progress-bar-label.stage3 {
+	left: 525px;
+}
+.progress-bar-label.stage4 {
+	left: 695px;
+}
+.progress-bar-label.active a {
+	color: #278ff1;
+}
+.progress-bar-number.active {
+	background: url(../images/project_number_active.png) no-repeat; 
+	color: #fff;
+}
+.progress-time {
+	position: absolute; 
+	width: 100px; 
+	height: 26px; 
+	line-height: 24px; 
+	text-align: center;
+    font-family: Verdana, Tahoma, Sans-serif; 
+	border: 0px; 
+	padding: 0;
+}
+.progress-start {
+	top: 39px; 
+	left: 30px; 
+	color: #278ff1;
+}
+.progress-end {
+	top: 39px; 
+	left: 892px; 
+	color: #888888;
+}
+
+.sheet ul {
+	margin: 0; 
+	padding: 0;
+}
+.sheet ul li {
+	list-style: none; 
+	line-height: 42px; 
+	padding-left: 20px; 
+	cursor: pointer; 
+	border-bottom: 1px solid #eee; 
+	border-top: 1px solid #f9f9f9;
+}
+.sheet ul li: first-child {
+	border-top: 1px solid #eee;
+}
+.sheet ul li.active {
+	background: #F9F9F9; 
+	cursor: auto; 
+	border-top: 1px solid #f9f9f9;
+}
+
+.content-sections {
+	padding: 20px 20px 20px 100px; 
+	position: relative;
+}
+.content-sections fieldset {
+	border: 0; 
+	margin: 0px 0px 10px 0px; 
+	padding: 0; 
+	min-height: 30px;
+}
+.content-sections label {
+	float: left; 
+	width: 130px; 
+	padding-top: 0.4em; 
+	font-size: 13px; 
+	height: 13px;
+}
+.content-sections label.rowtwo {
+	height: 52px;
+}
+.content-sections .label {
+	font-size: 13px;
+}
+.tagSele.field {
+	border: 0px;
+}
+.content-sections input, .content-sections select {
+	height: 26px;
+}
+.content-sections select {
+	font-size: 14px; 
+	border: 1px solid #c4c4c4; 
+	border-radius: 3px; 
+	background: #fff;
+}
+.content-sections textarea {
+	margin-bottom: 12px; 
+	padding: 5px 6px 5px 12px;
+}
+.content-sections .colone {
+	width: 100px;
+}
+.content-sections .coltwo {
+	width: 200px;
+}
+.content-sections .colthree {
+	width: 300px;
+}
+.content-sections .colfour {
+	width: 400px;
+}
+.content-sections .colfive {
+	width: 500px;
+}
+.content-sections select.colone {
+	width: 104px;
+}
+.content-sections select.coltwo {
+	width: 208px;
+}
+.content-sections select.colthree {
+	width: 312px;
+}
+.content-sections .contacts {
+	width: 730px; 
+	height: 132px; 
+	float: left; 
+	padding-top: 10px; 
+	margin-bottom: 3px;
+}
+.content-sections .error {
+	border-color: red; 
+	background-color: #FEE;
+}
+
+.input-append {
+	display: inline-block; 
+	font-size: 0; 
+	white-space: nowrap; 
+	vertical-align: middle;
+}
+.input-append input {
+	border-radius: 4px 0 0 4px;
+}
+.input-append .add-on: last-child {
+	border-radius: 0 4px 4px 0;
+}
+.input-append .add-on {
+	
+	margin-left: -1px;
+}
+.input-append .add-on {
+	vertical-align: top;
+}
+.input-append .add-on {
+	display: inline-block; 
+	width: auto; 
+	height: 26px; 
+	min-width: 26px; 
+	padding: 0px 0px; 
+	font-size: 14px; 
+	font-weight: normal; 
+	line-height: 20px; 
+	text-align: center; 
+	text-shadow: 0 1px 0 #ffffff; 
+	background-color: #eeeeee; 
+	border: 1px solid #ccc;
+
+}
+.icon {
+	cursor: pointer; 
+	display: inline-block; 
+	vertical-align: text-top; 
+	background-repeat: no-repeat; 
+	
+}
+.icon-baidumap {
+	width: 20px; 
+	height: 20px; 
+	margin-top: 2px; 
+	line-height: 14px; 
+	background-image: url(../images/btn_baidumap.png);
+}
+.icon-calendar {
+	width: 22px; 
+	height: 20px; 
+	margin-top: 2px; 
+	line-height: 14px; 
+	background-image: url(../images/btn_calendar.png);
+}
+
+.topline {
+	position: absolute; 
+	top: 0px; 
+	left: 30px; 
+	width: 779px; 
+	height: 0px; 
+	border-top: 1px solid #888; 
+	
+}
+
+.functions .buttons {
+	position: absolute; 
+	top: 24px;
+	width: 100%;
+}
+.functions .button {
+	width: 93px; 
+	height: 31px; 
+	position: absolute;
+	left: 373px;
+	background: url(../images/btn93x31_gray_light.png); 
+	border: 0px; 
+	text-align: center;
+    line-height: 30px; 
+	font-size: 16px; 
+	color: #fff; 
+	cursor: pointer; 
+}
+.functions .button: hover {
+	background: url(../images/btn93x31_gray_dark.png);
+}
+.functions .button.active {
+	background: url(../images/btn93x31_light.png);
+}
+.functions .button.active: hover {
+	background: url(../images/btn93x31_dark.png);
+}
+
+.image-button {
+	cursor: pointer; 
+	width: 28px; 
+	height: 26px;
+}
+	
+.tips .title {
+	color: #278ff1; 
+	line-height: 30px;
+}
+.tips .text {
+	color: #888; 
+	line-height: 20px;
+}
+
+.ui-datepicker {
+	font-size: 12px; 
+	box-shadow: 0px 10px 13px #888;
+}
+
+
+.clear {
+	clear: both; 
+	height: 0; 
+	display: block;
+}
+
+.blue {
+	color: #278ff1;
+}
+.black {
+	color: #000;
+}
+.gray {
+	color: #c4c4c4;
+}
+
+.red-border {
+	border-color: #F88; 
+	background-color: #FFE8E8;
+}

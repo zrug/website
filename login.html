@@ -1,0 +1,115 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<title>ZPZChina</title>
+
+<link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="css/reset.css" type="text/css" />
+
+<!--[if lt IE 9 ]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]--> 
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/modernizr.custom.min.js"></script>
+<script src="js/global.js"></script>
+</head>
+
+<style>
+	body {
+		background-image: url(images/zpzbg01.png);
+		background-repeat: no-repeat;
+		background-color: #fff;
+		min-width: 1130px;
+	}
+	.wrapper {width:1130px; height:750px; margin:0 auto; position:relative; background:transparent; border:0px solid purple;}
+	.logo {background:url(images/zpzlogo.png) no-repeat; width:462px; height:223px; left:0px; top:0px; position:absolute;}
+	.login {background:url(images/loginbg.png) no-repeat; width:350px; height:220px; right:0px; top:250px; position:absolute;}
+	.login .text {background:#fff; width:240px; height:34px; border:0px; position:absolute;
+		font-size:16px; border:1px solid #ccc; border-radius:5px;}
+	.login .text.dark {background:#e8e8e8;}
+	.login .button {background:url(images/btn78x37_light.png) no-repeat; width:78px; height:37px; position:absolute; border:0px;
+		font-size:16px; color:#fff; text-shadow:-1px -1px #ccc; cursor:pointer;}
+	.login .button:hover {background:url(images/btn78x37_dark.png) no-repeat;}
+	.login #userName {left:50px; top:35px;}
+	.login #password {left:50px; top:89px;}
+	.login #doLogin {left:50px; top:143px;}
+
+	.register {display:none;}
+
+	.slogan {background:transparent; position:absolute; left:15px; top:550px;}
+	.slogan h1 {color:#fff; font-size:24px; line-height:36px; font-weight:normal; font-family:Verdana, sans-serif; text-shadow:-1px -1px #666;}
+	.slogan h2 {color:#fff; font-size:14px; line-height:32px; font-weight:normal; font-family:Verdana, sans-serif; text-shadow:-1px -1px #666;}
+</style>
+
+<body class="">
+	<div class="wrapper">
+		<div class="logo">
+		</div>
+		<div class="slogan">
+			<h1>All your base are belong to us!</h1>
+			<h2>We are ZPZChina</h2>
+		</div>
+		<div class="register">
+		</div>
+		<div class="login">
+			<input type="text" id="userName" class="text" placeholder="用户名" />
+			<input type="password" id="password" class="text" placeholder="密码" />
+			<button id="doLogin" class="button" >登录</button>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+$(function () {
+	$('.text').on('focus', function () {
+		$(this).addClass('dark');
+	}).on('blur', function () {
+		$(this).removeClass('dark');
+	}).on('keydown', function (e) {
+		if (e.keyCode == 13) {
+			if ($(this).attr('id') == 'password') {
+				$("#doLogin").click();
+			} else {
+				$(this).next('.text').focus();
+			}
+		}
+	});
+
+	$("#doLogin").click(function () {
+        var userName = $("#userName").val();
+        var password = $("#password").val();
+        var data = '{"userName":"' + userName + '","password":"' + password + '"}';
+
+        $.ajax({
+            url: "http://192.168.222.95/zpzserver/ZPZChina.svc/User/UserLogin",
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            data: data,
+            dataType: "Json",
+            success: function (msg) {
+            	console.log(msg);
+            	if (msg.d && msg.d.data && msg.d.status.statusCode == 200) {
+	            	var data = msg.d.data[0] || {};
+	                if (data["userToken"] != null) {
+		                $.cookie("token", data["userToken"]);
+		                $.cookie("UserID", data["userID"]);
+	                	console.log('redirection, token: ' + $.cookie("token"));
+	                    location.href = "project.html";
+	                }
+            	} else {
+            		console.log('login failed');
+            	}
+            },
+            error: function () {
+            }
+        })
+    });
+
+});
+</script>
+
+</html>
