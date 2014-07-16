@@ -1,0 +1,87 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<title>ZPZChina</title>
+
+<link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+
+<!--[if lt IE 9 ]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]--> 
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/modernizr.custom.min.js"></script>
+<script src="js/global.js"></script>
+</head>
+
+<style>
+body {padding: 20px;}
+.wrapper {position: relative; width: 1000px; margin: 0 auto;}
+
+
+</style>
+
+<body>
+	<div class="wrapper">
+		<div class="login">
+			<input type="text" id="userName" class="text" placeholder="用户名" />
+			<input type="password" id="password" class="text" placeholder="密码" />
+			<button id="doLogin" class="button" >登录</button>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+$(function () {
+	$('.text').on('focus', function () {
+		$(this).addClass('dark');
+	}).on('blur', function () {
+		$(this).removeClass('dark');
+	}).on('keydown', function (e) {
+		if (e.keyCode == 13) {
+			if ($(this).attr('id') == 'password') {
+				$("#doLogin").click();
+			} else {
+				$(this).next('.text').focus();
+			}
+		}
+	});
+
+	$("#doLogin").click(function () {
+        var userName = $("#userName").val();
+        var password = $("#password").val();
+        var data = '{"userName":"' + userName + '","password":"' + password + '"}';
+
+        $.ajax({
+            url: global.serviceUrl + "/Users/Login",
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            data: data,
+            dataType: "Json",
+            success: function (msg) {
+            	// console.log(msg);
+            	if (msg.d && msg.d.data && msg.d.status.statusCode == 200) {
+	            	var data = msg.d.data[0] || {};
+	                if (data["userToken"] != null) {
+		                $.cookie("token", data["userToken"]);
+		                $.cookie("UserID", data["userID"]);
+	                	// console.log('redirection, token: ' + $.cookie("token"));
+	                    location.href = "allProjectTests.html";
+	                }
+            	} else {
+            		console.log('login failed');
+            	}
+            },
+            error: function () {
+            }
+        })
+    });
+
+});
+</script>
+
+</html>
