@@ -93,8 +93,6 @@ Project.prototype.addProjectToServer = function (data, successfunc, errorfunc) {
         success: function (msg) {
             console.log("project post success");
             console.log(msg);
-            console.log(msg.d.data[0].projectID);
-
             if (msg && msg.d && msg.d.data[0] && msg.d.status && msg.d.status.statusCode == 200) {
                 if (_this.contacts) {
                     _this.contacts.postToServer({
@@ -380,6 +378,7 @@ $(function () {
     // 加载照片控件
     if (typeof PhotosRows === "function") {
         project.photos = new PhotosRows({
+            view: $('.photo-section'),
             projectID: global.QueryString.projectID
         });
     }

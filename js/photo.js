@@ -31,6 +31,7 @@ var PhotosRows = function (options) {
 		$('.photos').each(function () {
 			var category = $(this).attr('fieldId');
 			var photosRow = new PhotosRow({
+				'view': _this.opt.view,
 				'category': category
 			});
 			_this.list[category] = photosRow;
@@ -209,12 +210,13 @@ var PhotosRow = function (options) {
 		}
 	}
 	this.dropPhoto = function (options) {
+		options.view = this.opt.view;
 		var photo = new Photo(options);
 		this.el.prepend(photo.el);
 		this.list.push(photo);
 	}
 	this.init = function (options) {
-		this.category = options.category;
+		this.opt = $.extend({}, options);
 		this.list = [];
 		this.el = $('<div class="c"><div class="clear"></div></div>');
 	}
@@ -271,13 +273,19 @@ var Photo = function (options) {
 		return this.edited;
 	}
 	this.fillData = function (data) {
+		var _this = this;
 		// console.log('photo fillData:');
 		// console.log(data);
 		this.data = data;
 		this.el = this.template.photo(this.data);
+		this.el.on('click', function () {
+			var img = _this.el.clone();
+			_this.opt.view.html(img);
+		});
 		return this;
 	}
 	this.init = function (options) {
+		this.opt = options;
 		this.category = options.category;
 		this.id = global.uuid();
 		this.fillData(options);
