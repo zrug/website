@@ -227,7 +227,7 @@ var Photo = function (options) {
 	this.template = {
 		photo: function (data) {
 			if (data.imgContent) {
-				return $('<div class="photo"><img src="data:image/jpeg;base64,'+ (data.imgContent.replace('data:image/jpeg;base64,','') || 'js/dropfile/test1.png') +'" /></div>');
+				return $('<div class="thumb"><img src="data:image/jpeg;base64,'+ (data.imgContent.replace('data:image/jpeg;base64,','') || 'js/dropfile/test1.png') +'" /></div>');
 			} else {
 				return $('<div class="thumb" ref="'+data.url+'"><img src="data:image/jpeg;base64,'+ (data.imgCompressionContent.replace('data:image/jpeg;base64,','') || 'js/dropfile/test1.png') +'" /></div>')
 			}
@@ -275,6 +275,9 @@ var Photo = function (options) {
 		// console.log(data);
 		this.data = data;
 		this.el = this.template.photo(this.data);
+
+		console.log(this.el);
+
 		return this;
 	}
 	this.init = function (options) {
