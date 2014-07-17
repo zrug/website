@@ -72,7 +72,7 @@ function stateSelectorInit(obj_1,obj_2,obj_3){
 	var pindex;
 	$("#"+obj_1).change(function(){
 		//获取索引
-		console.log($(this).attr('id') + ' is change');
+		// console.log($(this).attr('id') + ' is change');
 		pindex = $("#"+obj_1).get(0).selectedIndex;
 		//清空c和h
 		$("#"+obj_2).empty();

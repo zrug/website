@@ -122,8 +122,8 @@ Project.prototype.addProjectToServer = function (data, successfunc, errorfunc) {
 
 Project.prototype.fillContentFromJsonData = function (data) {
     if (!data) return;
-console.log('fillContentFromJsonData');
-    console.log(data);
+// console.log('fillContentFromJsonData');
+    // console.log(data);
 
     this.data = data;
     var _this = this;
@@ -134,7 +134,7 @@ console.log('fillContentFromJsonData');
         var fieldid = $(this).attr('fieldId');
         var $els = $('.field-' + fieldid);
         var value = data[fieldid];
-console.log('field['+fieldid+'] value['+value+']');
+// console.log('field['+fieldid+'] value['+value+']');
         $(this).data('originalValue', value);
         if (value != undefined) {
             $els.each(function () {

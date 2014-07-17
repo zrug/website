@@ -50,7 +50,7 @@ var ContactsRows = function (options) {
 
 			if (projectID) {
 				var url = '/BaseContacts/' + ($.cookie('token') || global.test_token) + '?projectID=' + projectID + '&category=' + category;
-				console.log(global.serviceUrl+url);
+				// console.log(global.serviceUrl+url);
 	            $.ajax({
 	                url: global.serviceUrl + url,
 	                type: "GET",
@@ -62,7 +62,7 @@ var ContactsRows = function (options) {
 	                        console.log(msg.d.data);
 	                        _this.list[category].fillData(msg.d.data);
 	                    } else {
-	                        console.log("contacts GET failed at: " + category + " Code:" + msg.d.status.statusCode + ", text:" + msg.d.status.errors);
+	                        // console.log("contacts GET failed at: " + category + " Code:" + msg.d.status.statusCode + ", text:" + msg.d.status.errors);
 	                    }
 	                },
 	                error: function (msg) {
@@ -100,7 +100,7 @@ var ContactsRows = function (options) {
 	        });
 
 	        if (_this.list[row].list[index].local_data) {
-	        	console.log(_this.list[row].list[index].local_data);
+	        	// console.log(_this.list[row].list[index].local_data);
 	            fillContactSection(_this.list[row].list[index].local_data);
 	        } else {
 	            clearContactSection();
@@ -263,12 +263,12 @@ var Contact = function (options) {
 				 (this.local_data.workAt != data.workAt) ||
 				 (this.local_data.workAddress != data.workAddress)
 				) {
-				console.log('has local_data and be edited');
+				// console.log('has local_data and be edited');
 				this.setEdited();
 			}
 		} else {
 			if (!data.baseContactID) {
-				console.log('have no local_data, but be created');
+				// console.log('have no local_data, but be created');
 				this.setEdited();
 			}
 		}
