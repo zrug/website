@@ -225,14 +225,15 @@ fieldset {
 	min-height: 30px;
 }
 .content-sections label {
-	float: left; 
-	width: 130px; 
-	padding-top: 0.4em; 
-	font-size: 13px; 
+	float: left;
+	width: 150px;
+	padding-top: 0.4em;
+	padding-bottom: 10px;
+	font-size: 13px;
 	height: 13px;
 }
 .content-sections label.rowtwo {
-	height: 52px;
+	height: 45px;
 }
 .content-sections .label {
 	font-size: 13px;

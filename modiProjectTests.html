@@ -19,6 +19,7 @@
 <script src="js/stateSelector.js"></script>
 <script src="js/poping.js"></script>
 
+<script src="js/history.js"></script>
 <script src="js/contact.js"></script>
 <script src="js/photo.js"></script>
 <script src="js/project.js"></script>
@@ -38,9 +39,9 @@ $(function () {
 body {padding: 20px;}
 .wrapper {position: relative; width: 1000px; margin: 0 auto;}
 .nav {margin-bottom:20px; text-align: right;}
-label {width: 120px; float:left;}
+label {width: 160px; float:left;}
 
-.tagsele-body {margin-bottom: 13px;}
+.tagsele-body {margin-bottom: 15px; margin-top: 4px;}
 .tagsele-tags {padding: 4px; margin-right: 4px; border: 1px solid #c4c4c4;}
 .tagsele-tags.selected {background: #DDF;}
 
@@ -57,6 +58,8 @@ label {width: 120px; float:left;}
 .dragtrigger { margin-bottom: 10px;}
 .photos .photo, .photos .thumb {float: left; margin: 10px 0px 0px 10px;}
 .photos .photo img, .photos .thumb img {height: 90px; padding: 3px; border: 1px solid #c4c4c4;}
+.btn-history-toggle.historyon {background: #CFC;}
+.historying {background-color: #eeF; background-image: url(images/btn_history.png); background-repeat: no-repeat; background-position: 0% 50%; height: 30px; line-height: 30px; text-align: center; padding-left: 5px; width: 150px; margin: 0px 5px 0px 0px; border-radius: 4px; color: #66f;}
 </style>
 </head>
 <body>
@@ -66,6 +69,7 @@ label {width: 120px; float:left;}
     <div class="nav">
     <a href="modiProjectTests.html?newProject=1">新建项目</a>&nbsp;
     <a href="allProjectTests.html">全部项目</a>&nbsp;
+    <a class="btn-history-toggle">修改记录</a>
     </div>
 
     <fieldset>
