@@ -278,22 +278,10 @@ var Photo = function (options) {
 		// console.log(data);
 		this.data = data;
 		this.el = this.template.photo(this.data);
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-		console.log(this.el);
-
-=======
-=======
->>>>>>> FETCH_HEAD
 		this.el.on('click', function () {
 			var img = _this.el.clone();
 			_this.opt.view.html(img);
 		});
-<<<<<<< HEAD
->>>>>>> FETCH_HEAD
-=======
->>>>>>> FETCH_HEAD
 		return this;
 	}
 	this.init = function (options) {
