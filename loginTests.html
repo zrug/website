@@ -63,14 +63,14 @@ $(function () {
             data: data,
             dataType: "Json",
             success: function (msg) {
-            	// console.log(msg);
+            	console.log(msg);
             	if (msg.d && msg.d.data && msg.d.status.statusCode == 200) {
 	            	var data = msg.d.data[0] || {};
 	                if (data["userToken"] != null) {
 		                $.cookie("token", data["userToken"]);
 		                $.cookie("UserID", data["userID"]);
-	                	// console.log('redirection, token: ' + $.cookie("token"));
-	                    location.href = "allProjectTests.html";
+	                	console.log('redirection, token: ' + $.cookie("token"));
+	                    // location.href = "allProjectTests.html";
 	                }
             	} else {
             		console.log('login failed');

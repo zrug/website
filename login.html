@@ -85,7 +85,7 @@ $(function () {
         var data = '{"userName":"' + userName + '","password":"' + password + '"}';
 
         $.ajax({
-            url: "http://192.168.222.95/zpzserver/ZPZChina.svc/User/UserLogin",
+            url: global.serviceUrl + "/Users/Login",
             type: "POST",
             contentType: "application/json;charset=utf-8",
             data: data,
@@ -98,7 +98,7 @@ $(function () {
 		                $.cookie("token", data["userToken"]);
 		                $.cookie("UserID", data["userID"]);
 	                	console.log('redirection, token: ' + $.cookie("token"));
-	                    location.href = "project.html";
+	                    // location.href = "allProjectTests.html";
 	                }
             	} else {
             		console.log('login failed');
