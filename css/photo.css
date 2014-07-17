@@ -11,3 +11,5 @@
 .attach:hover {background:#0f6099; color:#fff;}
 .cmps {background:url(../images/cmps.png) no-repeat; width:7px; height:12px; overflow:hidden; position:absolute; left:5px; top:5px;}
 .cmps-hover {background-position:-36px 0;}
+.photo-section {margin: 0 auto; width: auto; height: auto; padding: 25px; background: #fff; border-radius: 25px; 
+    box-shadow: 0px 15px 30px #333; display: none;}
