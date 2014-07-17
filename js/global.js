@@ -9,9 +9,9 @@ if (!console) {
 }
 
 var global = {
-    // "serviceUrl" : "http://192.168.0.78:801/zpzserver/ZPZChina.svc",
-    "serviceUrl" : "http://192.168.222.95/zpzserver/ZPZChina.svc",
-    "test_token" : "0f582787-dbd9-4430-bbe3-0b3013840aee",
+    "serviceUrl" : "http://192.168.0.78:801/zpzserver/ZPZChina.svc",
+    // "serviceUrl" : "http://192.168.222.95/zpzserver/ZPZChina.svc",
+    "test_token" : "22e6af9e-925b-4d18-8038-d410148ef976",
     "userName" : "tester",
     "clen" : function (str) {
         str = str + "";
