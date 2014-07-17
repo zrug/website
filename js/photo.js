@@ -280,9 +280,41 @@ var Photo = function (options) {
 		this.el = this.template.photo(this.data);
 		this.el.on('click', function () {
 			var img = _this.el.clone();
-			_this.opt.view.html(img);
+			if (img.attr('ref')) {
+				var url = global.serviceUrl + '/' + img.attr('ref');
+				$.ajax({
+		        url: url,
+		        type: "GET",
+		        contentType: "application/json; charset=utf-8",
+		        dataType: "json",
+		        success: function (msg) {
+		        	console.log('photo reference GET success');
+		            console.log(msg);
+		            if (msg && msg.d && msg.d.data[0] && msg.d.status && msg.d.status.statusCode == 200) {
+		            	var photo = $('<img />').attr({'src': 'data:image/jpeg;base64,' + msg.d.data[0].imgContent});
+		            	_this.photoSectionView(photo);
+		            } else {
+		            	console.log('photo reference GET failed: ' + msg.d.status.statusText);
+		            }
+		        },
+		        error: function (msg) {
+		            console.log('photo reference GET error: ' + msg.d.status.statusText);
+		        }
+		    });
+			} else {
+				_this.photoSectionView(img);
+			}
 		});
 		return this;
+	}
+	this.photoSectionView = function (img) {
+		this.opt.view.html(img).bPopup({
+            opacity: 0.6,
+            speed: 150,
+            transition: 'fadeIn',
+            closeClass: 'close'
+        });
+
 	}
 	this.init = function (options) {
 		this.opt = options;
