@@ -92,8 +92,6 @@ Project.prototype.addProjectToServer = function (data, successfunc, errorfunc) {
         success: function (msg) {
             console.log("project post success");
             console.log(msg);
-            console.log(msg.d.data[0].projectID);
-
             if (msg && msg.d && msg.d.data[0] && msg.d.status && msg.d.status.statusCode == 200) {
                 if (_this.contacts) {
                     _this.contacts.postToServer({
