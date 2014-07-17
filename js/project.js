@@ -70,11 +70,10 @@ Project.prototype.dataToDate = function (data) {
 }
 
 Project.prototype.addProjectToServer = function (data, successfunc, errorfunc) {
-    var url = '/Projects/AddProject';
+    var url = '/Projects/';
     var action = 'ADD';
     var _this = this;
     if (this.inModify) {
-        url = '/Projects/';
         action = 'MODIFY';
         if (!data.data) data.data = {};
         data.data.projectID = this.opt.projectID;
@@ -125,7 +124,7 @@ Project.prototype.addProjectToServer = function (data, successfunc, errorfunc) {
 
 Project.prototype.fillContentFromJsonData = function (data) {
     if (!data) return;
-
+console.log('fillContentFromJsonData');
     console.log(data);
 
     this.data = data;
@@ -137,7 +136,7 @@ Project.prototype.fillContentFromJsonData = function (data) {
         var fieldid = $(this).attr('fieldId');
         var $els = $('.field-' + fieldid);
         var value = data[fieldid];
-
+console.log('field['+fieldid+'] value['+value+']');
         $(this).data('originalValue', value);
         if (value != undefined) {
             $els.each(function () {
@@ -380,6 +379,7 @@ $(function () {
     // 加载照片控件
     if (typeof PhotosRows === "function") {
         project.photos = new PhotosRows({
+            view: $('.photo-section'),
             projectID: global.QueryString.projectID
         });
     }
