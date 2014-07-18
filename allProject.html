@@ -9,6 +9,7 @@
 <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" href="css/reset.css" type="text/css" />
 <link rel="stylesheet" href="css/tagSele.css" type="text/css" />
+<link rel="stylesheet" href="css/allProject.css" type="text/css" />
 
 <!--[if lt IE 9 ]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -25,167 +26,11 @@
 <script src="js/jquery.tagSele.js"></script>
 <script src="js/projectSwitchProgress.js"></script>
 <script src="js/stateSelector.js"></script>
+
+<script src="js/allProject.js"></script>
 <style>
-body {background:#F0EEEE url(images/zpzbg03f.jpg) repeat-y 50% 0%;}
-.hide {display:none;}
-.red {color:red;}
-.wrapper {position:relative; width:1077px; margin:0 auto; font-size:14px;}
-
-.nav {position:absolute; top:10px; left:0px;}
-.nav a {text-decoration:none; font-size:18px; color:#fff; margin:0 30px 0 0;}
-
-.logo {position:absolute; top:10px; right:0px; background:url(images/zpzlogo02.png) no-repeat; width:369px; height:47px;}
-
-.page {position:absolute; top:110px; left:0px; width:1077px; padding:20px 0px; background:transparent;}
-.sheet     {width:240px; height:450px; float:left;}
-.search    {width:1053px; height:60px; position:absolute; top:20px; left:6px; 
-    background:transparent url(images/search_bar_without_func.png) no-repeat;}
-.search input#q {margin:7px 0px 0px 90px; border:0px; height:44px; width:890px; font-size:20px;}
-.content   {width:1077px; height:auto; margin:90px 0px 30px 0px; min-height:640px; background:transparent;}
-
-.content dl {}
-.content dl dd {width:261px; height:240px; margin:0px 8px 10px 0px; float:left;}
-
-.porject-card {font-size:12px; cursor:pointer;}
-.porject-card .blue {color:#278ff1;}
-.porject-card .gray {color:#888888;}
-.porject-card .orange {color:#ff9000;} 
-
-.porject-card {background:#fff; padding:0; position:relative;}
-.porject-card #projectName {position:absolute; left:14px; top:14px; font-size:16px; padding-right:85px;}
-.porject-card #projectProgress {position:absolute; right:15px; top:12px;}
-.porject-card #projectSection {height:48px; width:48px;}
-.porject-card #investment-title {position:absolute; left:10px; top:66px; font-size:12px;}
-.porject-card #investment {position:absolute; left:10px; top:86px; }
-.porject-card #areaOfStructure-title {position:absolute; left:100px; top:66px; font-size:12px;}
-.porject-card #areaOfStructure {position:absolute; left:100px; top:86px; }
-.porject-card #expectedStartTime {position:absolute; left:173px; width:93px; text-align:center; top:68px; font-size:12px;}
-.porject-card #expectedFinishTime {position:absolute; left:173px; width:96px; text-align:center; top:86px; font-size:12px;}
-.porject-card #map {position:absolute; left:0px; top:106px; width:261px; height:100px; background:#c8c8c8;}
-.porject-card #map img {width:261px; height:100px;}
-.porject-card .mappoint {position:absolute; left:8px; top:210px; width:20px; height:20px; 
-    background:url(images/arrow-gps.png) no-repeat;}
-.porject-card #district {position:absolute; left:34px; top:216px; font-size:12px;}
-.porject-card #province_city {position:absolute; left:90px; top:215px; text-align:right; width:166px;}
-.endOfPage {display:none;}
-
-.button {width:120px; height:44px; border-radius:5px; cursor:pointer;}
-.button.green {border:1px solid #9F9; background:#EFE;}
-.button.green:hover {background:#AFA;}
-
-.clear {clear:both; height:0; display:block;}
-
-.blue {color:#278ff1;}
-.black {color:#000;}
-.gray {color:#c4c4c4;}
 
 </style>
-<script type="text/javascript">
-global.scrollingLoader = {
-    index: 0,
-    pageSize: 12,
-    identify: 0
-};
-
-$(function () {
-    console.log('user: ' + $.cookie('userID') + ' token: ' + $.cookie('token') );
-
-    projectCardLoader(global.scrollingLoader.index, global.scrollingLoader.pageSize)
-
-    $(window).scroll(function () {
-        // console.log( 'windiow: ' + ($(window).scrollTop() + $(window).height()) + ' content: ' + ($('.content').offset().top + $('.content').height()) );
-        if ($(window).scrollTop() + $(window).height() >= 
-            $('.content').offset().top + $('.content').height() ) { 
-
-            if ( global.scrollingLoader.identify >= $(window).scrollTop()-100 && global.scrollingLoader.identify <= $(window).scrollTop()+100 ) {
-                // console.log('in loading');
-            } else {
-                global.scrollingLoader.identify = $(window).scrollTop();
-
-                global.scrollingLoader.index += global.scrollingLoader.pageSize;
-                projectCardLoader(global.scrollingLoader.index, global.scrollingLoader.pageSize)
-            }
-        }
-    });
-});
-
-var projectCardLoader = function (index, pageSize) {
-
-    var makeProjectCards = function (data) {
-        var dataToDate = function (data) {
-            if (!data) return "";
-            var date = eval('new ' + data.replace(/\//g, ''));
-            return date.getFullYear() + '-' + (date.getMonth()*1+1) + '-' + date.getDate();
-        }
-        var card = function (data) {
-            var el = $('<dd class="porject-card"> \
-                            <p class="gray" id="projectName"></p> \
-                            <p class="" id="projectProgress"> \
-                                <img src="images/projectCardSection1.png" id="projectSection" /> \
-                            </p> \
-                            <p class="" id="mapicon"></p> \
-                            <p class="blue" id="investment-title">投资额</p> \
-                            <p class="gray" id="investment"></p> \
-                            <p class="blue" id="areaOfStructure-title">建筑面积</p> \
-                            <p class="gray" id="areaOfStructure"></p> \
-                            <p class="gray" id="expectedStartTime"></p> \
-                            <p class="orange" id="expectedFinishTime"></p> \
-                            <div class="fakemap" id="map"> \
-                                <img src="images/fakemap.png" /> \
-                            </div> \
-                            <div class="mappoint" id=""></div> \
-                            <p class="blue" id="district"></p> \
-                            <p class="gray" id="province_city"></p> \
-                        </dd>');
-
-            el.find('#projectName').text(
-                data.projectName ?
-                ( data.projectName.length < 20 ? data.projectName : (data.projectName.substring(0, 19) + '...') ) : ''
-            );
-            el.find('#province_city').text(
-                data.landAddress ?
-                ( data.landAddress.length < 26 ? data.landAddress : (data.landAddress.substring(0, 25) + '...') ) : ''
-            );
-            el.find('#investment').text('￥' + (data.investment || "").toLocaleString());
-            el.find('#areaOfStructure').text((data.areaOfStructure || "").toLocaleString() + '㎡');
-            el.find('#expectedStartTime').text(dataToDate(data.expectedStartTime));
-            el.find('#expectedFinishTime').text(dataToDate(data.expectedFinishTime));
-            el.find('#district').text(data.district);
-            el.attr({'ref': data.projectID});
-            el.on('click', function () {
-                var surl = 'modiProject.html?projectID=' + $(this).attr('ref');
-                location.href = surl;
-            });
-            return el;
-        };
-        // $('.content dl dd').remove();
-        $(data).each(function () {
-            $('.content dl').append(card(this));
-        });
-        $('.endOfPage').show();
-    }
-    var url = '/Projects/' + ($.cookie('token') || global.test_token) + '?startIndex=' + index + '&pageSize=' + pageSize;
-    console.log(global.serviceUrl + url);
-    $.ajax({
-        url: global.serviceUrl + url,
-        type: "GET",
-        contentType: "application/json; charset=utf-8",
-        dataType: "Json",
-        success: function (msg) {
-            console.log(msg.d);
-            if (msg.d.status.statusCode == -1) {
-                console.log('THE ERROR: ' + msg.d.status.errors);
-                // location.href = "login.html";
-            }
-            makeProjectCards(msg.d.data);
-        },
-        error: function (msg) {
-        },
-    })
-
-};
-
-</script>
 </head>
 <body>
 
