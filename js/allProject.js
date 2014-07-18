@@ -1,32 +1,45 @@
 global.scrollingLoader = {
     index: 0,
     pageSize: 12,
-    identify: 0
+    identify: 0,
+    q: global.QueryString.q
 };
 
 $(function () {
     console.log('user: ' + $.cookie('userID') + ' token: ' + $.cookie('token') );
 
-    projectCardLoader(global.scrollingLoader.index, global.scrollingLoader.pageSize)
+    console.log('keywords: ' + global.scrollingLoader.q);
+
+    // load first page
+    projectCardLoader(global.scrollingLoader);
 
     $(window).scroll(function () {
-        // console.log( 'windiow: ' + ($(window).scrollTop() + $(window).height()) + ' content: ' + ($('.content').offset().top + $('.content').height()) );
         if ($(window).scrollTop() + $(window).height() >= 
             $('.content').offset().top + $('.content').height() ) { 
 
             if ( global.scrollingLoader.identify >= $(window).scrollTop()-100 && global.scrollingLoader.identify <= $(window).scrollTop()+100 ) {
-                // console.log('in loading');
+
             } else {
                 global.scrollingLoader.identify = $(window).scrollTop();
 
-                global.scrollingLoader.index += global.scrollingLoader.pageSize;
-                projectCardLoader(global.scrollingLoader.index, global.scrollingLoader.pageSize)
+                global.scrollingLoader.index ++;
+                projectCardLoader(global.scrollingLoader);
             }
         }
     });
+
+    $('#q').on('keydown', function (e) {
+        if (e.keyCode == 13) {
+            console.log($(this).val());
+            location.href="?q=" + $(this).val();
+            $(this).select();
+        }
+    }).on('click', function () {
+        $(this).select();
+    }).focus().val(decodeURIComponent(global.QueryString.q));
 });
 
-var projectCardLoader = function (index, pageSize) {
+var projectCardLoader = function (opt) {
 
     var makeProjectCards = function (data) {
         var dataToDate = function (data) {
@@ -81,7 +94,13 @@ var projectCardLoader = function (index, pageSize) {
         });
         $('.endOfPage').show();
     }
-    var url = '/Projects/' + ($.cookie('token') || global.test_token) + '?startIndex=' + index + '&pageSize=' + pageSize;
+
+    var url = '/Projects/' + ($.cookie('token') || global.test_token) + '?startIndex=' + opt.index + '&pageSize=' + opt.pageSize;
+
+    if (opt.q) {
+        url += '&keywords=' + opt.q;
+    }
+
     console.log(global.serviceUrl + url);
     $.ajax({
         url: global.serviceUrl + url,
@@ -89,12 +108,14 @@ var projectCardLoader = function (index, pageSize) {
         contentType: "application/json; charset=utf-8",
         dataType: "Json",
         success: function (msg) {
-            console.log(msg.d);
-            if (msg.d.status.statusCode == -1) {
+            console.log(msg);
+            if (msg && msg.d && msg.d.status && msg.d.status.statusCode == 200) {
+                makeProjectCards(msg.d.data);
+            }
+            if (msg && msg.d && msg.d.status && msg.d.status.statusCode == -1) {
                 console.log('THE ERROR: ' + msg.d.status.errors);
                 // location.href = "login.html";
             }
-            makeProjectCards(msg.d.data);
         },
         error: function (msg) {
         },
