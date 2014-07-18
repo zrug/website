@@ -31,6 +31,7 @@ $(function () {
     } else {
         console.log('new ing project');
     }
+    project.tests();
     console.log('user: ' + $.cookie('userID') + ' token: ' + ($.cookie('token') ? '(c)'+$.cookie('token') : '(o)'+global.test_token) );
 });
 </script>

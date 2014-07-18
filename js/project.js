@@ -4,6 +4,7 @@ var Project = function (options) {
     this.opt = $.extend({}, options);
     this.content = $('.content');
     this.inModify = false;
+    this.inTests = false;
 
     this.init = function (options) {
 
@@ -51,6 +52,10 @@ var Project = function (options) {
 Project.prototype.modify = function () {
     this.inModify = true;
     console.log('modify ing project');
+}
+Project.prototype.tests = function () {
+    this.inTests = true;
+    console.log('open html tests mode');
 }
 Project.prototype.dateToData = function (date) {
     if (date) {
@@ -106,6 +111,7 @@ Project.prototype.addProjectToServer = function (data, successfunc, errorfunc) {
                 }
                 alert('项目信息保存成功');
                 // location.href = 'modiProject.html?projectID='+msg.d.data[0].projectID;
+                location.href = _this.inTests ? '#':'allProject.html';
 
             } else {
 

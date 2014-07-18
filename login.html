@@ -97,8 +97,8 @@ $(function () {
 	                if (data["userToken"] != null) {
 		                $.cookie("token", data["userToken"]);
 		                $.cookie("UserID", data["userID"]);
-	                	console.log('redirection, token: ' + $.cookie("token"));
-	                    // location.href = "allProjectTests.html";
+	                	console.log('redirection, token in cookie: [' + $.cookie("token") + '] token in param: [' + data["userToken"] + ']');
+	                    location.href = "allProject.html";
 	                }
             	} else {
             		console.log('login failed');
