@@ -52,9 +52,10 @@ Project.prototype.modify = function () {
     this.inModify = true;
     console.log('modify ing project');
 }
-Project.prototype.dateToData = function (date) {
-    if (date) {
-        var value = (new Date(date)).valueOf();
+Project.prototype.dateToData = function (date, time) {
+    console.log('dateToData: ['+date+']['+time+']');
+    if (date && time) {
+        var value = (new Date(date + ' ' + time)).valueOf();
         if (isNaN(value)) {
             return '-1';
         } else {
@@ -66,7 +67,10 @@ Project.prototype.dateToData = function (date) {
 }
 Project.prototype.dataToDate = function (data) {
     var v = eval('new ' + data.replace(/\//g, ''));
-    return v.Format("yyyy-MM-dd");
+    return {
+        'date': v.Format("yyyy-MM-dd"),
+        'time': v.Format("hh:mm:ss")
+    }
 }
 
 Project.prototype.addProjectToServer = function (data, successfunc, errorfunc) {
@@ -165,10 +169,11 @@ Project.prototype.fillContentFromJsonData = function (data) {
                         }
                         break;
                     case 'date':
+                        var conv = _this.dataToDate(value);
                         if ($el[0].tagName == 'DIV') {
-                            $el.text(_this.dataToDate(value));
+                            $el.text(conv.date).data('time', conv.time);
                         } else {
-                            $el.val(_this.dataToDate(value));
+                            $el.val(conv.date).data('time', conv.time);
                         }
                         break;
                 }
@@ -239,7 +244,7 @@ Project.prototype.getJsonDataFromContent = function (pageContent) {
                 }
                 break;
             case 'date':
-                value = _this.dateToData($el.val());
+                value = _this.dateToData($el.val(), $el.data('time'));
                 if (value === '-1') {
                     validate = false;
                     _this.canNotPass($el);
