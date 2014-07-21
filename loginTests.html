@@ -70,7 +70,7 @@ $(function () {
 		                $.cookie("token", data["userToken"]);
 		                $.cookie("UserID", data["userID"]);
 	                	console.log('redirection, token in cookie: [' + $.cookie("token") + '] token in param: [' + data["userToken"] + ']');
-	                    // location.href = "allProjectTests.html";
+	                    location.href = "allProjectTests.html";
 	                }
             	} else {
             		console.log('login failed');
