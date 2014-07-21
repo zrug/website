@@ -25,7 +25,7 @@ $.fn.mapapi = function () {
 				var map = new BMap.Map("map-container");            // 创建Map实例
 
 				map.addControl(new BMap.NavigationControl({
-							type: BMAP_NAVIGATION_CONTROL_ZOOM
+					type: BMAP_NAVIGATION_CONTROL_ZOOM
 				}));
 
 				if (_this.address) {
@@ -42,8 +42,12 @@ $.fn.mapapi = function () {
 					    _this.setGeo(point);
 					    map.addOverlay(new BMap.Marker(point));
 					  } else {
-				        	alert("百度地图找不到这个地址");
-					  	console.log('can not geo it');
+					  	if (_this.geo) {
+					        map.centerAndZoom(new BMap.Point(_this.geo.longitude, _this.geo.latitude), 15); 
+						    $("#map-container").show();
+						} else {
+							alert('百度地图找不到这个地址');
+						}
 					  }
 					}, $('#district').val());
 

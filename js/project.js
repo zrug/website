@@ -177,6 +177,15 @@ Project.prototype.fillContentFromJsonData = function (data) {
         }
 
     });
+    console.log('longitude:' + data['longitude'] + ', latitude:' + data['latitude']);
+    if (data['longitude'] && data['latitude']) {
+        var point = {
+            lng: data['longitude'],
+            lat: data['latitude']
+        };
+        $('.btn-openmap').data('geo', point);
+    }
+
 }
 
 Project.prototype.getJsonDataFromContent = function (pageContent) {
@@ -243,6 +252,13 @@ Project.prototype.getJsonDataFromContent = function (pageContent) {
                 break;
         }
     });
+
+    if ($('.btn-openmap').data('geo')) {
+        var point = $('.btn-openmap').data('geo');
+        data['longitude'] = point.lng;
+        data['latitude'] = point.lat;
+    }
+
     return {
         data: data,
         validate: validate
