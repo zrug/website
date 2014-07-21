@@ -11,7 +11,7 @@ if (!console) {
 var global = {
     "serviceUrl" : "http://192.168.0.78:801/zpzserver/ZPZChina.svc",
     // "serviceUrl" : "http://192.168.222.95/zpzserver/ZPZChina.svc",
-    "test_token" : "22e6af9e-925b-4d18-8038-d410148ef976",
+    "test_token" : "97435af3-c048-4727-a77f-317b65ff97e1",
     "userName" : "tester",
     "clen" : function (str) {
         str = str + "";
