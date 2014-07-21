@@ -6,6 +6,24 @@ var History = function (opt) {
 	this.init(opt);
 }
 
+History.prototype.makeContent = function (datas) {
+    var row = function (data) {
+        return "<dl class='row'>" + 
+                "<dd class='who'>" + data.updatedBy + "</dd>" + 
+                "<dd class='t1'>将：</dd>" + 
+                "<dd class='from'>" + data.oldValue + "</dd>" + 
+                "<dd class='t2'>改为：</dd>" + 
+                "<dd class='to'>" + data.newValue + "</dd>" +
+                "</dl>";
+    }
+    console.log(datas);
+    var html = '';
+    $(datas).each(function () {
+        html += row(this);
+    });
+    return html ;
+}
+
 History.prototype.loadHistory = function () {
     var el = $(this.opt.el).next('.field');
     if (!el || el.length == 0) {
@@ -18,6 +36,7 @@ History.prototype.loadHistory = function () {
     	+ ($.cookie('token') || global.test_token) + '/history'
     	+ '?projectID=' + this.opt.projectID 
     	+ '&fieldName=' + elID;
+    var _this = this;
     $.ajax({
         url: url,
         type: "GET",
@@ -26,7 +45,13 @@ History.prototype.loadHistory = function () {
         success: function (msg) {
             if (msg && msg.d && msg.d.status && msg.d.status.statusCode == 200) {
                 console.log("history GET success");
-                console.log(msg.d);
+
+                _this.opt.view.html(_this.makeContent(msg.d.data)).bPopup({
+                    opacity: 0.6,
+                    speed: 150,
+                    transition: 'fadeIn',
+                    closeClass: 'close'
+                });
             } else {
                 console.log("history GET failed Code:" + msg.d.status.statusCode + ", text:" + msg.d.status.errors);
             }
@@ -54,6 +79,7 @@ $(function () {
 
                 	var history = new History({
                 		el: this, 
+                        view: $('.history-section'),
                 		projectID: global.QueryString.projectID
                 	});
                 	history.loadHistory();
