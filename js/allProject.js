@@ -6,10 +6,9 @@ global.scrollingLoader = {
 };
 
 $(function () {
-    console.log('user: ' + $.cookie('userID') + ' token: ' + $.cookie('token') );
 
-    console.log('keywords: ' + global.scrollingLoader.q);
-    console.log('typeof: ' + typeof global.scrollingLoader.q);
+    console.log('user: ' + $.cookie('userID') + ' token: ' 
+            + ($.cookie('token')==undefined?('(o)'+global.test_token):('(c)'+$.cookie('token'))) );
 
     // load first page
     projectCardLoader(global.scrollingLoader);
@@ -42,7 +41,7 @@ $(function () {
 
 var projectCardLoader = function (opt) {
 
-    var makeProjectCards = function (data) {
+    var makeProjectCards = function (datas) {
         var dataToDate = function (data) {
             if (!data) return "";
             var date = eval('new ' + data.replace(/\//g, ''));
@@ -89,8 +88,17 @@ var projectCardLoader = function (opt) {
             });
             return el;
         };
+        var pageCount = Math.round(datas.status.totalCount / global.scrollingLoader.pageSize);
+        var pageRecordStartAt = global.scrollingLoader.index * global.scrollingLoader.pageSize + 1;
+        var pageRecordEndAt = (global.scrollingLoader.index+1) * global.scrollingLoader.pageSize;
+        pageRecordEndAt = pageRecordEndAt > datas.status.totalCount ? datas.status.totalCount : pageRecordEndAt;
+
+
+        console.log( "第["+(global.scrollingLoader.index+1)+"]页，共["+pageCount+"]页，\
+第["+pageRecordStartAt+"]-["+pageRecordEndAt+"]条，共["+datas.status.totalCount+"]条" );
+        
         // $('.content dl dd').remove();
-        $(data).each(function () {
+        $(datas.data).each(function () {
             $('.content dl').append(card(this));
         });
         $('.endOfPage').show();
@@ -102,7 +110,7 @@ var projectCardLoader = function (opt) {
         url += '&keywords=' + opt.q;
     }
 
-    console.log(global.serviceUrl + url);
+    // console.log(global.serviceUrl + url);
     $.ajax({
         url: global.serviceUrl + url,
         type: "GET",
@@ -111,7 +119,7 @@ var projectCardLoader = function (opt) {
         success: function (msg) {
             console.log(msg);
             if (msg && msg.d && msg.d.status && msg.d.status.statusCode == 200) {
-                makeProjectCards(msg.d.data);
+                makeProjectCards(msg.d);
             }
             if (msg && msg.d && msg.d.status && msg.d.status.statusCode == -1) {
                 console.log('THE ERROR: ' + msg.d.status.errors);
