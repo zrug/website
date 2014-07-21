@@ -299,7 +299,7 @@ fieldset {
 .input-append input {
 	border-radius: 4px 0 0 4px;
 }
-.input-append .add-on: last-child {
+.input-append .add-on:last-child {
 	border-radius: 0 4px 4px 0;
 }
 .input-append .add-on {
@@ -404,7 +404,6 @@ fieldset {
 	box-shadow: 0px 10px 13px #888;
 }
 
-
 .clear {
 	clear: both; 
 	height: 0; 
@@ -425,3 +424,24 @@ fieldset {
 	border-color: #F88; 
 	background-color: #FFE8E8;
 }
+
+.btn-history-toggle {
+	background: url(../images/btn_history.png) no-repeat;
+	position: absolute;
+	top: 232px;
+	right: 24px;
+	height: 16px;
+	width: 16px;
+	cursor: pointer;
+}
+
+#map-container {
+	width: 700px;
+	height: 300px;
+	border: 1px solid #c4c4c4;
+	margin-bottom: 10px;
+	margin-left: 0px;
+	display: none;
+}
+
+

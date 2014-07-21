@@ -9,6 +9,7 @@ $(function () {
     console.log('user: ' + $.cookie('userID') + ' token: ' + $.cookie('token') );
 
     console.log('keywords: ' + global.scrollingLoader.q);
+    console.log('typeof: ' + typeof global.scrollingLoader.q);
 
     // load first page
     projectCardLoader(global.scrollingLoader);
@@ -36,7 +37,7 @@ $(function () {
         }
     }).on('click', function () {
         $(this).select();
-    }).focus().val(decodeURIComponent(global.QueryString.q));
+    }).focus().val(decodeURIComponent(global.QueryString.q || ''));
 });
 
 var projectCardLoader = function (opt) {
@@ -83,7 +84,7 @@ var projectCardLoader = function (opt) {
             el.find('#district').text(data.district);
             el.attr({'ref': data.projectID});
             el.on('click', function () {
-                var surl = 'modiProject.html?projectID=' + $(this).attr('ref');
+                var surl = 'modiProject' + (global.inTests || '') + '.html?projectID=' + $(this).attr('ref');
                 location.href = surl;
             });
             return el;

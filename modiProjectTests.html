@@ -15,10 +15,17 @@
 <script src="js/bpopup.js"></script>
 <script src="js/global.js"></script>
 <script src="js/jquery.tagSele.js"></script>
+<script src="js/jquery.mapapi.js"></script>
 <script src="js/projectSwitchProgress.js"></script>
 <script src="js/stateSelector.js"></script>
 <script src="js/poping.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=0wvVIIyreUp42Mi7W329LG2F"></script>
 
+<!-- <script type="text/javascript" src="js/BMAPscript.js"></script> -->
+
+<script>
+global.inTests = 'Tests';
+</script>
 <script src="js/history.js"></script>
 <script src="js/contact.js"></script>
 <script src="js/photo.js"></script>
@@ -31,8 +38,9 @@ $(function () {
     } else {
         console.log('new ing project');
     }
-    project.tests();
-    console.log('user: ' + $.cookie('userID') + ' token: ' + ($.cookie('token') ? '(c)'+$.cookie('token') : '(o)'+global.test_token) );
+    console.log('user: ' + $.cookie('userID') + ' token: ' 
+        + ($.cookie('token') ? '(c)'+$.cookie('token') : '(o)'+global.test_token) );
+
 });
 </script>
 
@@ -61,6 +69,12 @@ label {width: 160px; float:left;}
 .photos .photo img, .photos .thumb img {height: 90px; padding: 3px; border: 1px solid #c4c4c4;}
 .btn-history-toggle.historyon {background: #CFC;}
 .historying {background-color: #eeF; background-image: url(images/btn_history.png); background-repeat: no-repeat; background-position: 0% 50%; height: 30px; line-height: 30px; text-align: center; padding-left: 5px; width: 150px; margin: 0px 5px 0px 0px; border-radius: 4px; color: #66f;}
+#map-container {width: 680px; height: 250px; border: 1px solid #c4c4c4; margin-bottom: 10px; margin-left: 160px;}
+
+.history-section {margin: 0 auto; min-width:500px; min-height: 200px; padding: 25px; background: #fff; border-radius: 25px; 
+    box-shadow: 0px 15px 30px #333; display: none;}
+.history-section .row {border-top:1px solid #c4c4c4; font-size:12px; clear:both; margin:0; min-height:30px; max-width:700px;}
+.history-section dd {float:left;}
 </style>
 </head>
 <body>
@@ -89,9 +103,16 @@ label {width: 160px; float:left;}
     </fieldset>
 
     <fieldset>
-    <label>地块地址：</label>
-    <input type="text" fieldId="landAddress" class="field-landAddress field" valuetype="string" />
+    <label for="landAddress">地块地址：</label>
+    <div class="input-append">
+        <span><input type="text" fieldId="landAddress" class="field-landAddress field colthree"
+                twins="landAddress" valuetype="string" />
+        </span>
+        <span class="add-on btn-openmap" ref="field-landAddress"><i class="icon icon-tag"></i></span>
+    </div>
     </fieldset>
+
+    <div id="map-container"></div>
 
     <fieldset>
     <label>土地面积：</label>
@@ -454,6 +475,9 @@ label {width: 160px; float:left;}
     </div>
 
     <div class="photo-section">
+    </div>
+
+    <div class="history-section">
     </div>
 
     <button class="btn-save button">保存</button>

@@ -4,7 +4,6 @@ var Project = function (options) {
     this.opt = $.extend({}, options);
     this.content = $('.content');
     this.inModify = false;
-    this.inTests = false;
 
     this.init = function (options) {
 
@@ -22,7 +21,7 @@ var Project = function (options) {
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (msg) {
-                    // console.log(msg.d.status);
+                    console.log(msg.d);
                     if (msg.d && msg.d.status) {
 
                         if (msg.d.status.statusCode == 200) {
@@ -52,10 +51,6 @@ var Project = function (options) {
 Project.prototype.modify = function () {
     this.inModify = true;
     console.log('modify ing project');
-}
-Project.prototype.tests = function () {
-    this.inTests = true;
-    console.log('open html tests mode');
 }
 Project.prototype.dateToData = function (date) {
     if (date) {
@@ -111,7 +106,7 @@ Project.prototype.addProjectToServer = function (data, successfunc, errorfunc) {
                 }
                 alert('项目信息保存成功');
                 // location.href = 'modiProject.html?projectID='+msg.d.data[0].projectID;
-                location.href = _this.inTests ? '#':'allProject.html';
+                location.href = global.inTests ? '#':'allProject.html';
 
             } else {
 
@@ -393,6 +388,8 @@ $(function () {
 
     // 初始化selectmenu样式
     $('.selectmenu').selectmenu();
+
+    $('.btn-openmap').mapapi();
 
     // select 未选择时为灰色
     // $('select').on('change', function () {
