@@ -23,7 +23,8 @@ $.fn.tagSele = function () {
 		this.makeTagElems = function () {
 			var _this = this;
 			var isSingle = this.$el.attr('multiple') ? "" : "tagsele-single";
-			$(this.el.options).each(function () {
+
+			$(this.el).find('option').each(function () {
 				var span = document.createElement("span");
 				var obj = $(span).addClass('tagsele-tags tagsele-not-selected ' + isSingle)
 					.attr({'value':$(this).attr('value')}).text(this.label);
