@@ -8,11 +8,40 @@ $.fn.mapapi = function () {
 		// };
 
 		this.setGeo = function (point) {
+			console.log('setGeo: lng['+(point.longitude || point.lng)+'] lat['+(point.latitude || point.lat)+']');
 			this.geo = {
-		    	longitude: point.longitude,
-		    	latitude: point.latitude
+		    	longitude: (point.longitude || point.lng),
+		    	latitude: (point.latitude || point.lat)
 		    };
 		    this.$el.data('geo', this.geo);
+		}
+
+		this.search = function (map, address) {
+		    console.log("BMap Search: " + address);
+
+		    var myGeo = new BMap.Geocoder();
+			// 将地址解析结果显示在地图上,并调整地图视野
+			var _this = this;
+			myGeo.getPoint(address, function(point){
+			  if (point) {
+			    map.centerAndZoom(point, 16);
+			    _this.setGeo(point);
+			    map.addOverlay(new BMap.Marker(point));
+			  } else {
+				alert('百度地图找不到这个地址');
+			  }
+			}, $('#district').val());
+
+		}
+		this.locate = function (map, point) {
+		    console.log("BMap Geo: " + point.longitude + ", " + point.latitude);
+		    var pp = new BMap.Point(point.longitude, point.latitude);
+	        map.centerAndZoom(pp, 15);
+	        map.addOverlay(new BMap.Marker(pp));
+		}
+		this.initMap = function (map) {
+			console.log("BMap init at shanghai");
+	        map.centerAndZoom(new BMap.Point(121.480486, 31.236193), 15);
 		}
 
 		this.map = function () {
@@ -25,7 +54,6 @@ $.fn.mapapi = function () {
 
 				_this.$input = $('.' + _this.$el.attr('ref'));
 				_this.address = _this.$input.val();
-
 				_this.origAddr = _this.$input.data('originalValue');
 
 			    $("#map-container").show();
@@ -41,33 +69,19 @@ $.fn.mapapi = function () {
 				console.log('origAddr:' + _this.origAddr + ', address:' + _this.address);
 				console.log('geo:' + _this.geo);
 
+			    var address = $('#district').val() + ' ' + $('#city').val() + ' ' + _this.address;
+
 				if (_this.address != _this.origAddr && _this.address != '') {
-
-				    var address = $('#district').val() + ' ' + $('#city').val() + ' ' + _this.address;
-				    console.log("BMap Search: " + address);
-
-				    var myGeo = new BMap.Geocoder();
-					// 将地址解析结果显示在地图上,并调整地图视野
-					myGeo.getPoint(address, function(point){
-					  if (point) {
-					    map.centerAndZoom(point, 16);
-					    _this.setGeo(point);
-					    map.addOverlay(new BMap.Marker(point));
-					  } else {
-						alert('百度地图找不到这个地址');
-					  }
-					}, $('#district').val());
+					_this.search(map, address);
 
 				} else if (_this.geo) {
+					_this.locate(map, _this.geo);
 
-				    console.log("BMap Geo: " + _this.geo.longitude + ", " + _this.geo.latitude);
-				    var point = new BMap.Point(_this.geo.longitude, _this.geo.latitude);
-			        map.centerAndZoom(point, 15);
-			        map.addOverlay(new BMap.Marker(point));
+				} else if (_this.address) {
+					_this.search(map, address);
+
 				} else {
-					
-					console.log("BMap init at shanghai");
-			        map.centerAndZoom(new BMap.Point(121.480486, 31.236193), 15);
+					_this.initMap(map);
 
 				}
 
