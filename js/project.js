@@ -182,11 +182,11 @@ Project.prototype.fillContentFromJsonData = function (data) {
         }
 
     });
-    console.log('longitude:' + data['longitude'] + ', latitude:' + data['latitude']);
-    if (data['longitude'] && data['latitude']) {
+    console.log('longitude:' + data.longitude + ', latitude:' + data.latitude);
+    if (data.longitude && data.latitude) {
         var point = {
-            lng: data['longitude'],
-            lat: data['latitude']
+            longitude: data.longitude,
+            latitude: data.latitude
         };
         $('.btn-openmap').data('geo', point);
     }
@@ -256,11 +256,12 @@ Project.prototype.getJsonDataFromContent = function (pageContent) {
                 break;
         }
     });
+console.log($('.btn-openmap').data('geo'));
 
     if ($('.btn-openmap').data('geo')) {
         var point = $('.btn-openmap').data('geo');
-        data['longitude'] = point.lng;
-        data['latitude'] = point.lat;
+        data['longitude'] = point.longitude;
+        data['latitude'] = point.latitude;
     }
 
     return {

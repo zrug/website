@@ -9,26 +9,39 @@ $.fn.mapapi = function () {
 
 		this.setGeo = function (point) {
 			this.geo = {
-		    	longitude: point.lng,
-		    	latitude: point.lat
+		    	longitude: point.longitude,
+		    	latitude: point.latitude
 		    };
 		    this.$el.data('geo', this.geo);
 		}
 
 		this.map = function () {
 			var _this = this;
+
 			this.$el.on('click', function () {
-				_this.$el.data('geo', _this.geo);
+				if (_this.$el.data('geo')) {
+					_this.setGeo(_this.$el.data('geo'));
+				}
+
 				_this.$input = $('.' + _this.$el.attr('ref'));
 				_this.address = _this.$input.val();
 
-				var map = new BMap.Map("map-container");            // 创建Map实例
+				_this.origAddr = _this.$input.data('originalValue');
+
+			    $("#map-container").show();
+			    $("#map-container .icon-remove").on('click', function () {
+			    	$("#map-container").hide();
+			    	$(this).off('click');
+			    });
+				var map = new BMap.Map("map");            // 创建Map实例
 
 				map.addControl(new BMap.NavigationControl({
 					type: BMAP_NAVIGATION_CONTROL_ZOOM
 				}));
+				console.log('origAddr:' + _this.origAddr + ', address:' + _this.address);
+				console.log('geo:' + _this.geo);
 
-				if (_this.address) {
+				if (_this.address != _this.origAddr && _this.address != '') {
 
 				    var address = $('#district').val() + ' ' + $('#city').val() + ' ' + _this.address;
 				    console.log("BMap Search: " + address);
@@ -37,23 +50,25 @@ $.fn.mapapi = function () {
 					// 将地址解析结果显示在地图上,并调整地图视野
 					myGeo.getPoint(address, function(point){
 					  if (point) {
-					  	$("#map-container").show();
 					    map.centerAndZoom(point, 16);
 					    _this.setGeo(point);
 					    map.addOverlay(new BMap.Marker(point));
 					  } else {
-					  	if (_this.geo) {
-					        map.centerAndZoom(new BMap.Point(_this.geo.longitude, _this.geo.latitude), 15); 
-						    $("#map-container").show();
-						} else {
-							alert('百度地图找不到这个地址');
-						}
+						alert('百度地图找不到这个地址');
 					  }
 					}, $('#district').val());
 
 				} else if (_this.geo) {
-			        map.centerAndZoom(new BMap.Point(_this.geo.longitude, _this.geo.latitude), 15); 
-				    $("#map-container").show();
+
+				    console.log("BMap Geo: " + _this.geo.longitude + ", " + _this.geo.latitude);
+				    var point = new BMap.Point(_this.geo.longitude, _this.geo.latitude);
+			        map.centerAndZoom(point, 15);
+			        map.addOverlay(new BMap.Marker(point));
+				} else {
+					
+					console.log("BMap init at shanghai");
+			        map.centerAndZoom(new BMap.Point(121.480486, 31.236193), 15);
+
 				}
 
 
