@@ -73,7 +73,7 @@ $(function () {
             });
         } else {
             console.log('open history mode');
-            $('label').each(function () {
+            $('label.btn-history').each(function () {
 
                 $(this).addClass('historying').on('click', function () {
 

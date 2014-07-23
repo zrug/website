@@ -110,12 +110,12 @@ $(function () {
                 <div class="content-sections content-section1 page1">
                     
                     <fieldset>
-                    <label for="landName">地块名称：</label>
+                    <label class="btn-history" for="landName">地块名称：</label>
                     <input type="text" fieldId="landName" class="field-landName field colthree" valuetype="string" />
                     </fieldset>
 
                     <fieldset>
-                    <label>所在省市：</label>
+                    <label class="btn-history">所在省市：</label>
                     <select id="district" fieldId="district" class="field-district field colone gray" valuetype="string">
                     </select>
                     <select id="province" fieldId="province" class="field-province field colone gray" valuetype="string">
@@ -125,7 +125,7 @@ $(function () {
                     </fieldset>
 
                     <fieldset>
-                    <label for="landAddress">地块地址：</label>
+                    <label class="btn-history" for="landAddress">地块地址：</label>
                     <div class="input-append">
                         <span><input type="text" fieldId="landAddress" class="field-landAddress field colthree"
                                 twins="landAddress" valuetype="string" />
@@ -138,17 +138,17 @@ $(function () {
 
 
                     <fieldset>
-                    <label for="area">土地面积：</label>
+                    <label class="btn-history" for="area">土地面积：</label>
                     <input type="text" fieldId="area" class="field-area field colone" valuetype="number" /> <span class="label">平方米</span>
                     </fieldset>
 
                     <fieldset>
-                    <label for="plotRatio">土地容积率：</label>
+                    <label class="btn-history" for="plotRatio">土地容积率：</label>
                     <input type="text" fieldId="plotRatio" class="field-plotRatio field colone" valuetype="number" /> <span class="label">%</span>
                     </fieldset>
 
                     <fieldset>
-                    <label for="usage" class="rowtwo">地块用途：</label>
+                    <label class="btn-history rowtwo" for="usage">地块用途：</label>
                     <select fieldId="usage" multiple="multiple" class="field-usage field tagSele" valuetype="string">
                         <option>工业</option>
                         <option>酒店及餐饮</option>
@@ -169,17 +169,17 @@ $(function () {
                 <div class="content-sections hide content-section2 page1">
 
                     <fieldset>
-                    <label for="projectName">项目名称：</label>
+                    <label class="btn-history" for="projectName">项目名称：</label>
                     <input type="text" fieldId="projectName" class="field-projectName field colthree" valuetype="string" /> 
                     </fieldset>
 
                     <fieldset>
-                    <label for="landAddress">项目地址：</label>
+                    <label class="btn-history" for="landAddress">项目地址：</label>
                     <input type="text" fieldId="landAddress" class="field-landAddress field colthree" twins="landAddress" valuetype="string" />
                     </fieldset>
 
                     <fieldset>
-                    <label for="description">项目描述：</label>
+                    <label class="btn-history" for="description">项目描述：</label>
                     <textarea fieldId="description" class="field-description field colfive" rows="4" valuetype="string"></textarea>
                     </fieldset>
 
@@ -190,7 +190,7 @@ $(function () {
                     </fieldset>
 
                     <fieldset>
-                    <label for="expectedStartTime">预计开工时间：</label>
+                    <label class="btn-history" for="expectedStartTime">预计开工时间：</label>
                     <div class="input-append">
                         <span><input type="text" fieldId="expectedStartTime" class="field-expectedStartTime field colone datepicker" placeholder="年/月/日" valuetype="date" twins="expectedStartTime" /></span>
                         <span class="add-on"><i class="icon icon-calendar"></i></span>
@@ -198,7 +198,7 @@ $(function () {
                     </fieldset>
 
                     <fieldset>
-                    <label for="expectedFinishTime">预计竣工时间：</label>
+                    <label class="btn-history" for="expectedFinishTime">预计竣工时间：</label>
                     <div class="input-append">
                         <span><input type="text" fieldId="expectedFinishTime" class="field-expectedFinishTime field colone datepicker" twins="expectedFinishTime" placeholder="年/月/日" valuetype="date" /></span>
                         <span class="add-on"><i class="icon icon-calendar"></i></span>
@@ -206,22 +206,22 @@ $(function () {
                     </fieldset>
 
                     <fieldset>
-                    <label for="investment">投资额：</label>
+                    <label class="btn-history" for="investment">投资额：</label>
                     <input type="text" fieldId="investment" class="field-investment field colone" valuetype="number" />
                     </fieldset>
 
                     <fieldset>
-                    <label for="areaOfStructure">建筑面积：</label>
+                    <label class="btn-history" for="areaOfStructure">建筑面积：</label>
                     <input type="text" fieldId="areaOfStructure" class="field-areaOfStructure field colone" valuetype="number" />
                     </fieldset>
 
                     <fieldset>
-                    <label for="storeyHeight">建筑层高：</label>
+                    <label class="btn-history" for="storeyHeight">建筑层高：</label>
                     <input type="text" fieldId="storeyHeight" class="field-storeyHeight field colone" valuetype="number" />
                     </fieldset>
 
                     <fieldset>
-                    <label for="storeyHeight">外资参与：</label>
+                    <label class="btn-history" for="storeyHeight">外资参与：</label>
                     <select name="fiut" fieldId="foreignInvestment" class="field-foreignInvestment field tagSele" valuetype="bool">
                         <option value="0">未参与</option>
                         <option value="1">已参与</option>
@@ -229,7 +229,7 @@ $(function () {
                     </fieldset>
 
                     <fieldset>
-                    <label for="ownerType">业主类型：</label>
+                    <label class="btn-history" for="ownerType">业主类型：</label>
                     <select fieldId="ownerType" multiple="multiple" class="field-ownerType field tagSele" valuetype="string">
                         <option>外商独资</option>
                         <option>中外合资</option>
@@ -302,7 +302,7 @@ $(function () {
                     </fieldset>
 
                     <fieldset>
-                    <label for="mainDesignStage">主体设计阶段：</label>
+                    <label class="btn-history" for="mainDesignStage">主体设计阶段：</label>
                     <select fieldId="mainDesignStage" class="field-mainDesignStage field tagSele" valuetype="string">
                         <option>结构</option>
                         <option>立面</option>
@@ -319,17 +319,17 @@ $(function () {
                 <div class="content-sections hide content-section3 page2">
 
                     <fieldset>
-                    <label for="expectedConstructionTime">预计施工时间：</label>
+                    <label class="btn-history" for="expectedConstructionTime">预计施工时间：</label>
                     <input type="text" fieldId="expectedConstructionTime" class="field-expectedConstructionTime field colone datepicker" valuetype="date" placeholder="年/月/日" />
                     </fieldset>
 
                     <fieldset>
-                    <label for="expectedFinishTime">预计竣工时间：</label>
+                    <label class="btn-history" for="expectedFinishTime">预计竣工时间：</label>
                     <input type="text" fieldId="expectedFinishTime" class="field-expectedFinishTime field colone datepicker" twins="expectedFinishTime" valuetype="date" placeholder="年/月/日" />
                     </fieldset>
 
                     <fieldset>
-                    <label for="propertyElevator">电梯：</label>
+                    <label class="btn-history" for="propertyElevator">电梯：</label>
                     <select fieldId="propertyElevator" class="field-propertyElevator field tagSele" valuetype="bool">
                         <option value="0">NO</option>
                         <option value="1">YES</option>
@@ -337,7 +337,7 @@ $(function () {
                     </fieldset>
 
                     <fieldset>
-                    <label for="propertyAirCondition">空调：</label>
+                    <label class="btn-history" for="propertyAirCondition">空调：</label>
                     <select fieldId="propertyAirCondition" class="field-propertyAirCondition field tagSele" valuetype="bool">
                         <option value="0">NO</option>
                         <option value="1">YES</option>
@@ -345,7 +345,7 @@ $(function () {
                     </fieldset>
 
                     <fieldset>
-                    <label for="propertyHeating">供暖方式：</label>
+                    <label class="btn-history" for="propertyHeating">供暖方式：</label>
                     <select fieldId="propertyHeating" class="field-propertyHeating field tagSele" valuetype="bool">
                         <option value="0">NO</option>
                         <option value="1">YES</option>
@@ -353,7 +353,7 @@ $(function () {
                     </fieldset>
 
                     <fieldset>
-                    <label for="propertyExternalWallMeterial">外墙材料：</label>
+                    <label class="btn-history" for="propertyExternalWallMeterial">外墙材料：</label>
                     <select fieldId="propertyExternalWallMeterial" class="field-propertyExternalWallMeterial field tagSele" valuetype="bool">
                         <option value="0">NO</option>
                         <option value="1">YES</option>
@@ -361,7 +361,7 @@ $(function () {
                     </fieldset>
 
                     <fieldset>
-                    <label for="propertyStealStructure">钢结构：</label>
+                    <label class="btn-history" for="propertyStealStructure">钢结构：</label>
                     <select fieldId="propertyStealStructure" class="field-propertyStealStructure field tagSele" valuetype="bool">
                         <option value="0">NO</option>
                         <option value="1">YES</option>
@@ -405,7 +405,7 @@ $(function () {
                 <div class="content-sections content-section1 page3">
 
                     <fieldset>
-                    <label for="actualStartTime">实际开工时间：</label>
+                    <label class="btn-history" for="actualStartTime">实际开工时间：</label>
                     <input type="text" fieldId="actualStartTime" class="field-actualStartTime field colone datepicker" valuetype="date" placeholder="年/月/日" />
                     </fieldset>
 
@@ -470,7 +470,7 @@ $(function () {
                 <div class="content-sections hide content-section4 page3">
 
                     <fieldset>
-                    <label for="fireControl">消防</label>
+                    <label class="btn-history" for="fireControl">消防</label>
                     <select fieldId="fireControl" class="field-fireControl field tagSele" valuetype="string">
                         <option>招标</option>
                         <option>正在施工</option>
@@ -479,7 +479,7 @@ $(function () {
                     </fieldset>
 
                     <fieldset>
-                    <label for="green">景观绿化</label>
+                    <label class="btn-history" for="green">景观绿化</label>
                     <select fieldId="green" class="field-green field tagSele" valuetype="string">
                         <option>招标</option>
                         <option>正在施工</option>
@@ -538,7 +538,7 @@ $(function () {
                 <div class="content-sections content-section1 page4">
 
                     <fieldset>
-                    <label for="electroweakInstallation">弱电安装</label>
+                    <label class="btn-history" for="electroweakInstallation">弱电安装</label>
                     <select fieldId="electroweakInstallation" class="field-electroweakInstallation field tagSele" valuetype="string">
                         <option>招标</option>
                         <option>正在施工</option>
@@ -563,7 +563,7 @@ $(function () {
                 <div class="content-sections hide content-section2 page4">
 
                     <fieldset>
-                    <label for="decorationSituation">装修情况</label>
+                    <label class="btn-history" for="decorationSituation">装修情况</label>
                     <select fieldId="decorationSituation" class="field-decorationSituation field tagSele" valuetype="string">
                         <option>无装修</option>
                         <option>简单全装修</option>
@@ -576,7 +576,7 @@ $(function () {
                 <div class="content-sections hide content-section3 page4">
 
                     <fieldset>
-                    <label for="decorationProgress">装修进度</label>
+                    <label class="btn-history" for="decorationProgress">装修进度</label>
                     <select fieldId="decorationProgress" class="field-decorationProgress field tagSele" valuetype="string">
                         <option>招标</option>
                         <option>正在施工</option>
