@@ -54,7 +54,8 @@ Project.prototype.modify = function () {
 }
 Project.prototype.dateToData = function (date, time) {
     console.log('dateToData: ['+date+']['+time+']');
-    if (date && time) {
+    if (date) {
+        time = time || '00:00:00';
         var value = (new Date(date + ' ' + time)).valueOf();
         if (isNaN(value)) {
             return '-1';
@@ -139,7 +140,7 @@ Project.prototype.fillContentFromJsonData = function (data) {
         var fieldid = $(this).attr('fieldId');
         var $els = $('.field-' + fieldid);
         var value = data[fieldid];
-// console.log('field['+fieldid+'] value['+value+']');
+
         $(this).data('originalValue', value);
         if (value != undefined) {
             $els.each(function () {
@@ -207,7 +208,6 @@ Project.prototype.getJsonDataFromContent = function (pageContent) {
 
         var originalValue = $el.data('originalValue');
 
-        // console.log('id: ' + fieldid + ' type: ' + valuetype);
         switch (valuetype) {
             case 'string':
                 if ($el.hasClass('tagSele')) {
