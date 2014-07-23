@@ -53,7 +53,6 @@ Project.prototype.modify = function () {
     console.log('modify ing project');
 }
 Project.prototype.dateToData = function (date, time) {
-    console.log('dateToData: ['+date+']['+time+']');
     if (date) {
         time = time || '00:00:00';
         var value = (new Date(date + ' ' + time)).valueOf();

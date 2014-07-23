@@ -239,7 +239,7 @@ if ($.datepicker) {
             dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],
             dayNamesMin: ['日','一','二','三','四','五','六'],
             weekHeader: '',
-            dateFormat: 'yy-mm-dd',
+            dateFormat: 'yy/mm/dd',
             firstDay: 1,
             isRTL: false,
             showMonthAfterYear: true,
