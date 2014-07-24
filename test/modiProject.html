@@ -69,7 +69,8 @@ label {width: 160px; float:left;}
 .photos .photo img, .photos .thumb img {height: 90px; padding: 3px; border: 1px solid #c4c4c4;}
 .btn-history-toggle.historyon {background: #CFC;}
 .historying {background-color: #eeF; background-image: url(images/btn_history.png); background-repeat: no-repeat; background-position: 0% 50%; height: 30px; line-height: 30px; text-align: center; padding-left: 5px; width: 150px; margin: 0px 5px 0px 0px; border-radius: 4px; color: #66f;}
-#map-container {width: 680px; height: 250px; border: 1px solid #c4c4c4; margin-bottom: 10px; margin-left: 160px;}
+#map-container {width: 700px; height: 300px; margin-bottom: 10px; margin-left: 160px; position: relative;}
+#map {width: 700px; height: 300px; border: 1px solid #c4c4c4;}
 
 .history-section {margin: 0 auto; min-width:500px; min-height: 200px; padding: 25px; background: #fff; border-radius: 25px; 
     box-shadow: 0px 15px 30px #333; display: none;}
@@ -88,12 +89,12 @@ label {width: 160px; float:left;}
     </div>
 
     <fieldset>
-    <label>地块名称：</label>
+    <label class="btn-history">地块名称：</label>
     <input type="text" fieldId="landName" class="field-landName field" valuetype="string" />
     </fieldset>
 
     <fieldset>
-    <label>所在省市：</label>
+    <label class="btn-history">所在省市：</label>
     <select id="district" fieldId="district" class="field-district field gray" valuetype="string">
     </select>
     <select id="province" fieldId="province" class="field-province field gray" valuetype="string">
@@ -112,20 +113,20 @@ label {width: 160px; float:left;}
     </div>
     </fieldset>
 
-    <div id="map-container"></div>
+    <div id="map-container"><div id="map"></div></div>
 
     <fieldset>
-    <label>土地面积：</label>
+    <label class="btn-history">土地面积：</label>
     <input type="text" fieldId="area" class="field-area field" valuetype="number" />
     </fieldset>
 
     <fieldset>
-    <label>土地容积率：</label>
+    <label class="btn-history">土地容积率：</label>
     <input type="text" fieldId="plotRatio" class="field-plotRatio field" valuetype="number" /> <span class="label">%</span>
     </fieldset>
 
     <fieldset>
-    <label class="rowtwo">地块用途：</label>
+    <label class="btn-history rowtwo">地块用途：</label>
     <select fieldId="usage" multiple="multiple" class="field-usage field tagSele" valuetype="string">
         <option>工业</option>
         <option>酒店及餐饮</option>
@@ -137,18 +138,18 @@ label {width: 160px; float:left;}
     </fieldset>
 
     <fieldset>
-    <label>项目名称：</label>
+    <label class="btn-history">项目名称：</label>
     <input type="text" fieldId="projectName" class="field-projectName field" valuetype="string" /> 
     </fieldset>
 
     <fieldset>
-    <label>项目描述：</label>
+    <label class="btn-history">项目描述：</label>
     <textarea fieldId="description" class="field-description field" rows="4" valuetype="string"></textarea>
     </fieldset>
 
     
     <fieldset>
-    <label>预计开工时间：</label>
+    <label class="btn-history">预计开工时间：</label>
     <div class="input-append">
         <span><input type="text" fieldId="expectedStartTime" class="field-expectedStartTime field datepicker" placeholder="年-月-日" valuetype="date" /></span>
         <span class="add-on"><i class="icon icon-calendar"></i></span>
@@ -156,7 +157,7 @@ label {width: 160px; float:left;}
     </fieldset>
 
     <fieldset>
-    <label>预计竣工时间：</label>
+    <label class="btn-history">预计竣工时间：</label>
     <div class="input-append">
         <span><input type="text" fieldId="expectedFinishTime" class="field-expectedFinishTime field datepicker" placeholder="年-月-日" valuetype="date" /></span>
         <span class="add-on"><i class="icon icon-calendar"></i></span>
@@ -164,22 +165,22 @@ label {width: 160px; float:left;}
     </fieldset>
 
     <fieldset>
-    <label>投资额：</label>
+    <label class="btn-history">投资额：</label>
     <input type="text" fieldId="investment" class="field-investment field" valuetype="number" />
     </fieldset>
 
     <fieldset>
-    <label>建筑面积：</label>
+    <label class="btn-history">建筑面积：</label>
     <input type="text" fieldId="areaOfStructure" class="field-areaOfStructure field" valuetype="number" />
     </fieldset>
 
     <fieldset>
-    <label>建筑层高：</label>
+    <label class="btn-history">建筑层高：</label>
     <input type="text" fieldId="storeyHeight" class="field-storeyHeight field" valuetype="number" />
     </fieldset>
 
     <fieldset>
-    <label>外资参与：</label>
+    <label class="btn-history">外资参与：</label>
     <select name="fiut" fieldId="foreignInvestment" class="field-foreignInvestment field tagSele" valuetype="bool">
         <option value="0">未参与</option>
         <option value="1">已参与</option>
@@ -187,7 +188,7 @@ label {width: 160px; float:left;}
     </fieldset>
 
     <fieldset>
-    <label>业主类型：</label>
+    <label class="btn-history">业主类型：</label>
     <select fieldId="ownerType" multiple="multiple" class="field-ownerType field tagSele" valuetype="string">
         <option>外商独资</option>
         <option>中外合资</option>
@@ -199,7 +200,7 @@ label {width: 160px; float:left;}
     </fieldset>
     
     <fieldset>
-    <label>主体设计阶段：</label>
+    <label class="btn-history">主体设计阶段：</label>
     <select fieldId="mainDesignStage" class="field-mainDesignStage field tagSele" valuetype="string">
         <option>结构</option>
         <option>立面</option>
@@ -213,12 +214,12 @@ label {width: 160px; float:left;}
     </fieldset>
 
     <fieldset>
-    <label>预计施工时间：</label>
+    <label class="btn-history">预计施工时间：</label>
     <input type="text" fieldId="expectedConstructionTime" class="field-expectedConstructionTime field datepicker" valuetype="date" placeholder="yyyy-mm-dd" />
     </fieldset>
 
     <fieldset>
-    <label>电梯：</label>
+    <label class="btn-history">电梯：</label>
     <select fieldId="propertyElevator" class="field-propertyElevator field tagSele" valuetype="bool">
         <option value="0">NO</option>
         <option value="1">YES</option>
@@ -226,7 +227,7 @@ label {width: 160px; float:left;}
     </fieldset>
 
     <fieldset>
-    <label>空调：</label>
+    <label class="btn-history">空调：</label>
     <select fieldId="propertyAirCondition" class="field-propertyAirCondition field tagSele" valuetype="bool">
         <option value="0">NO</option>
         <option value="1">YES</option>
@@ -234,7 +235,7 @@ label {width: 160px; float:left;}
     </fieldset>
 
     <fieldset>
-    <label>供暖方式：</label>
+    <label class="btn-history">供暖方式：</label>
     <select fieldId="propertyHeating" class="field-propertyHeating field tagSele" valuetype="bool">
         <option value="0">NO</option>
         <option value="1">YES</option>
@@ -242,7 +243,7 @@ label {width: 160px; float:left;}
     </fieldset>
 
     <fieldset>
-    <label>外墙材料：</label>
+    <label class="btn-history">外墙材料：</label>
     <select fieldId="propertyExternalWallMeterial" class="field-propertyExternalWallMeterial field tagSele" valuetype="bool">
         <option value="0">NO</option>
         <option value="1">YES</option>
@@ -250,7 +251,7 @@ label {width: 160px; float:left;}
     </fieldset>
 
     <fieldset>
-    <label>钢结构：</label>
+    <label class="btn-history">钢结构：</label>
     <select fieldId="propertyStealStructure" class="field-propertyStealStructure field tagSele" valuetype="bool">
         <option value="0">NO</option>
         <option value="1">YES</option>
@@ -258,12 +259,12 @@ label {width: 160px; float:left;}
     </fieldset>
 
     <fieldset>
-    <label>实际开工时间：</label>
+    <label class="btn-history">实际开工时间：</label>
     <input type="text" fieldId="actualStartTime" class="field-actualStartTime field datepicker" valuetype="date" placeholder="yyyy-mm-dd" />
     </fieldset>
 
     <fieldset>
-    <label>消防</label>
+    <label class="btn-history">消防</label>
     <select fieldId="fireControl" class="field-fireControl field tagSele" valuetype="string">
         <option>招标</option>
         <option>正在施工</option>
@@ -272,7 +273,7 @@ label {width: 160px; float:left;}
     </fieldset>
 
     <fieldset>
-    <label>景观绿化</label>
+    <label class="btn-history">景观绿化</label>
     <select fieldId="green" class="field-green field tagSele" valuetype="string">
         <option>招标</option>
         <option>正在施工</option>
@@ -281,7 +282,7 @@ label {width: 160px; float:left;}
     </fieldset>
 
     <fieldset>
-    <label>弱电安装</label>
+    <label class="btn-history">弱电安装</label>
     <select fieldId="electroweakInstallation" class="field-electroweakInstallation field tagSele" valuetype="string">
         <option>招标</option>
         <option>正在施工</option>
@@ -290,7 +291,7 @@ label {width: 160px; float:left;}
     </fieldset>
 
     <fieldset>
-    <label>装修情况</label>
+    <label class="btn-history">装修情况</label>
     <select fieldId="decorationSituation" class="field-decorationSituation field tagSele" valuetype="string">
         <option>无装修</option>
         <option>简单全装修</option>
@@ -300,7 +301,7 @@ label {width: 160px; float:left;}
     </fieldset>
 
     <fieldset>
-    <label>装修进度</label>
+    <label class="btn-history">装修进度</label>
     <select fieldId="decorationProgress" class="field-decorationProgress field tagSele" valuetype="string">
         <option>招标</option>
         <option>正在施工</option>
@@ -395,37 +396,37 @@ label {width: 160px; float:left;}
 
 
     <fieldset>
-    <label class="blue">拍卖单位联系人：</label>
+    <label class="blue btn-history">拍卖单位联系人：</label>
     <div class="contacts" id="auctionUnitContacts"></div>
     <div class="clear"></div>
     </fieldset>
 
     <fieldset>
-    <label class="blue">业主单位联系人：</label>
+    <label class="blue btn-history">业主单位联系人：</label>
     <div class="contacts" id="ownerUnitContacts"></div>
     <div class="clear"></div>
     </fieldset>
 
     <fieldset>
-    <label class="blue">地堪公司联系人：</label>
+    <label class="blue btn-history">地堪公司联系人：</label>
     <div class="contacts" id="explorationUnitContacts"></div>
     <div class="clear"></div>
     </fieldset>
 
     <fieldset>
-    <label class="blue">设计单位联系人：</label>
+    <label class="blue btn-history">设计单位联系人：</label>
     <div class="contacts" id="designInstituteContacts"></div>
     <div class="clear"></div>
     </fieldset>
 
     <fieldset>
-    <label class="blue">施工总承包：</label>
+    <label class="blue btn-history">施工总承包：</label>
     <div class="contacts" id="contractorUnitContacts"></div>
     <div class="clear"></div>
     </fieldset>
 
     <fieldset>
-    <label class="blue">桩基分包：</label>
+    <label class="blue btn-history">桩基分包：</label>
     <div class="contacts" id="pileFoundationUnitContacts"></div>
     <div class="clear"></div>
     </fieldset>
