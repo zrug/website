@@ -32,14 +32,14 @@ PopingView.prototype.show = function (options, callback) {
 	if (options.css) this.el.css(options.css);
 	$(options.parent || '.wrapper').append(this.el);
 	var _this = this;
-	console.log('setTimeout');
+	// console.log('setTimeout');
 	window.setTimeout(function () {
 		_this.dismiss({}, callback);
 	}, options.timeout || 2000);
 }
 
 PopingView.prototype.dismiss = function (options, callback) {
-	console.log('dismiss');
+	// console.log('dismiss');
 	var _this = this;
 	this.el.fadeOut(function () {
 		_this.el.remove();
