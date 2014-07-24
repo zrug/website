@@ -211,7 +211,7 @@ var PhotosRow = function (options) {
 	}
 	this.dropPhoto = function (options) {
 		options.view = this.opt.view;
-		var photo = new Photo(options);
+		var photo = new Photo(options, this);
 		this.el.prepend(photo.el);
 		this.list.push(photo);
 	}
@@ -224,14 +224,14 @@ var PhotosRow = function (options) {
 	// console.log(this);
 }
 
-var Photo = function (options) {
+var Photo = function (options, container) {
 
 	this.template = {
 		photo: function (data) {
 			if (data.imgContent) {
-				return $('<div class="thumb"><img src="data:image/jpeg;base64,'+ (data.imgContent.replace('data:image/jpeg;base64,','') || 'js/dropfile/test1.png') +'" /></div>');
+				return $('<div class="thumb"><img src="data:image/jpeg;base64,'+ (data.imgContent.replace('data:image/jpeg;base64,','') || 'js/dropfile/test1.png') +'" /><i class="icon icon-remove"></i></div>');
 			} else {
-				return $('<div class="thumb" ref="'+data.url+'"><img src="data:image/jpeg;base64,'+ (data.imgCompressionContent.replace('data:image/jpeg;base64,','') || 'js/dropfile/test1.png') +'" /></div>')
+				return $('<div class="thumb" ref="'+data.url+'"><img src="data:image/jpeg;base64,'+ (data.imgCompressionContent.replace('data:image/jpeg;base64,','') || 'js/dropfile/test1.png') +'" /><i class="icon icon-remove"></i></div>')
 			}
 		},
 	};
@@ -250,7 +250,7 @@ var Photo = function (options) {
 				},
 				"token" : ($.cookie('token') || global.test_token)
 			});
-			console.log(dataStringify);
+			// console.log(dataStringify);
 
 		    $.ajax({
 		        url: url,
@@ -304,6 +304,16 @@ var Photo = function (options) {
 			} else {
 				_this.photoSectionView(img);
 			}
+		}).hover(function () {
+			$(this).find('.icon-remove').show();
+		}, function () {
+			$(this).find('.icon-remove').hide();
+		});
+		$(this.el).find('.icon-remove').on('click', function (e) {
+			_this.parent.list.splice($(_this.el).index(), 1);
+			$(_this.el).remove();
+			console.log(_this.parent.list);
+			return false;
 		});
 		return this;
 	}
@@ -316,14 +326,15 @@ var Photo = function (options) {
         });
 
 	}
-	this.init = function (options) {
+	this.init = function (options, container) {
 		this.opt = options;
 		this.category = options.category;
 		this.id = global.uuid();
 		this.fillData(options);
 		this.edited = options.edited;
+		this.parent = container;
 	}
-	this.init(options);
+	this.init(options, container);
 	// console.log(this);
 }
 
