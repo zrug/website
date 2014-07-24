@@ -7,16 +7,16 @@
 <title>ZPZChina</title>
 
 <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
-<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+<link rel="stylesheet" href="../css/bootstrap.css" type="text/css" />
 
 <!--[if lt IE 9 ]>
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]--> 
 
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery.cookie.js"></script>
-<script src="js/modernizr.custom.min.js"></script>
-<script src="js/global.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script src="../js/modernizr.custom.min.js"></script>
+<script src="../js/global.js"></script>
 </head>
 
 <style>
@@ -70,7 +70,7 @@ $(function () {
 		                $.cookie("token", data["userToken"]);
 		                $.cookie("UserID", data["userID"]);
 	                	console.log('redirection, token in cookie: [' + $.cookie("token") + '] token in param: [' + data["userToken"] + ']');
-	                    location.href = "allProjectTests.html";
+	                    // location.href = "allProjectTests.html";
 	                }
             	} else {
             		console.log('login failed');
