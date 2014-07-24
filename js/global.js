@@ -11,7 +11,7 @@ if (!console) {
 var global = {
     "serviceUrl" : "http://192.168.0.78:801/zpzserver/ZPZChina.svc",
     // "serviceUrl" : "http://192.168.222.95/zpzserver/ZPZChina.svc",
-    "test_token" : "b3605e3a-8f79-46fa-a7f5-328973119f2b",
+    "test_token" : "2ea965d6-6ec1-4698-8d7f-389fc008fca5",
 
     "getToken" : function () {
         return $.cookie('token') || global.test_token;
