@@ -104,7 +104,7 @@ var projectCardLoader = function (opt) {
         $('.endOfPage').show();
     }
 
-    var url = '/Projects/' + ($.cookie('token') || global.test_token) + '?startIndex=' + opt.index + '&pageSize=' + opt.pageSize;
+    var url = '/Projects/' + global.getToken() + '?startIndex=' + opt.index + '&pageSize=' + opt.pageSize;
 
     if (opt.q) {
         url += '&keywords=' + opt.q;

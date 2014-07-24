@@ -11,7 +11,12 @@ if (!console) {
 var global = {
     "serviceUrl" : "http://192.168.0.78:801/zpzserver/ZPZChina.svc",
     // "serviceUrl" : "http://192.168.222.95/zpzserver/ZPZChina.svc",
-    "test_token" : "1f483043-26c7-418d-b117-715d01960284",
+    "test_token" : "8da250ac-3f22-4f19-976b-ab1342cd4baf",
+
+    "getToken" : function () {
+        return $.cookie('token') || global.test_token;
+    },
+
     "userName" : "tester",
     "clen" : function (str) {
         str = str + "";

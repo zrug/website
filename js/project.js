@@ -12,7 +12,7 @@ var Project = function (options) {
 
             this.initSectionNav(options.projectID);
 
-            var url = "/Projects/" + ($.cookie('token') || global.test_token) + "?projectID=" + options.projectID;
+            var url = "/Projects/" + global.getToken() + "?projectID=" + options.projectID;
             var _this = this;
 
             $.ajax({
@@ -256,7 +256,7 @@ Project.prototype.getJsonDataFromContent = function (pageContent) {
                 break;
         }
     });
-console.log($('.btn-openmap').data('geo'));
+// console.log($('.btn-openmap').data('geo'));
 
     if ($('.btn-openmap').data('geo')) {
         var point = $('.btn-openmap').data('geo');
