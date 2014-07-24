@@ -121,12 +121,12 @@ fieldset {
 }
 .progress-bar-number {
 	position: absolute; 
-	width: 26px; 
+	width: 27px; 
 	height: 27px; 
 	top: 35px;
      background: url(../images/project_number.png) no-repeat; 
 	line-height: 28px; 
-	text-align: center;
+	padding-left: 9px;
 }
 .progress-bar-number.stage1 {
 	left: 260px;
@@ -157,7 +157,7 @@ fieldset {
 	left: 184px;
 }
 .progress-bar-label.stage2 {
-	left: 354px;
+	left: 352px;
 }
 .progress-bar-label.stage3 {
 	left: 524px;
@@ -439,7 +439,7 @@ fieldset {
 	border: 1px solid #c4c4c4;
 }
 
-.icon-remove {
+#map-container .icon-remove {
 	width: 20px;
 	height: 20px;
 	border-radius: 10px;
