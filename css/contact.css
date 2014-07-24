@@ -16,7 +16,7 @@
 .content-sections select.colone {width:104px;}
 .content-sections select.coltwo {width:156px;}
 .content-sections select.colthree {width:208px;}
-.contact-section .right {float:right;}
+.contact-section .right {float:right; padding-right:1px;}
 .contact-section .left {float:left;}
 .contact-section .error {border-color:red; background-color:#FEE;}
 
@@ -27,9 +27,9 @@
     background:url(../images/btn93x31_gray_light.png) no-repeat; border:0px; padding:0; margin:0; text-align:center;
     line-height:30px; font-size:16px; color:#fff; cursor:pointer; }
 
-.contact-card {border:1px solid #c4c4c4; width:200px; height:110px; border-radius:8px; float:left;
+.contact-card {border:1px solid #c4c4c4; width:200px; height:89px; border-radius:8px; float:left;
     margin-right:20px; background:#fff; padding:0px 10px 20px 10px; cursor:pointer;}
-.contact-card fieldset {border-bottom:1px solid #bbb; margin:0; padding:8px 0px; min-height:25px; margin:0px;}
+.contact-card fieldset {border-bottom:1px solid #bbb; margin:0; padding:5px 0px; min-height:25px; margin:0px;}
 .contact-card fieldset.last {border-bottom:0px;}
 .contact-card label {float:left; width:50px; padding-top:0.4em; cursor:pointer; position:relative; padding-left:5px;}
 .contact-card input, .contact-card textarea {font-size:14px; border:0px; padding:0px 6px; cursor:pointer;}

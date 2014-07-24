@@ -1,8 +1,8 @@
 body {
 	background: #F0EEEE url(../images/zpzbg02.png) no-repeat 50% 0%; 
-	
-	font-family: Verdana, Tahoma, Sans-serif;
+	font-family: 华文细黑, Verdana, Tahoma, Sans-serif;
 }
+
 fieldset {
 	position: relative;
 }
@@ -121,11 +121,11 @@ fieldset {
 }
 .progress-bar-number {
 	position: absolute; 
-	width: 27px; 
+	width: 26px; 
 	height: 27px; 
 	top: 35px;
      background: url(../images/project_number.png) no-repeat; 
-	line-height: 29px; 
+	line-height: 28px; 
 	text-align: center;
 }
 .progress-bar-number.stage1 {
@@ -154,16 +154,16 @@ fieldset {
 	text-decoration: none;
 }
 .progress-bar-label.stage1 {
-	left: 185px;
+	left: 184px;
 }
 .progress-bar-label.stage2 {
-	left: 355px;
+	left: 354px;
 }
 .progress-bar-label.stage3 {
-	left: 525px;
+	left: 524px;
 }
 .progress-bar-label.stage4 {
-	left: 695px;
+	left: 694px;
 }
 .progress-bar-label.active a {
 	color: #278ff1;
@@ -280,7 +280,7 @@ fieldset {
 }
 .content-sections .contacts {
 	width: 730px; 
-	height: 132px; 
+	height: 112px; 
 	float: left; 
 	margin-bottom: 3px;
 }

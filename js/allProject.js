@@ -122,14 +122,19 @@ var projectCardLoader = function (opt) {
                 makeProjectCards(msg.d);
             }
             if (msg && msg.d && msg.d.status && msg.d.status.statusCode == -1) {
-                console.log('THE ERROR: ' + msg.d.status.errors);
-                alert('用户验证错误，请重新登录');
-                location.href = "login.html";
+                if (msg.d.status.errors == "No results") {
+                    console.log('No results');
+                } else if (msg.d.status.errors == "Token is invaild") {
+                    alert('用户验证错误，请重新登录');
+                    // location.href = "login.html";
+                } else {
+                    console.log('THE ERROR: ' + msg.d.status.errors);
+                }
             }
         },
         error: function (msg) {
                 alert('请联系管理员');
-                location.href = "login.html";
+                // location.href = "login.html";
         },
     })
 

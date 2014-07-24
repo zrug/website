@@ -461,6 +461,13 @@ $(function () {
         changeMonth: true,
         changeYear: true,
         showOptions: { direction: "down" }
+    }).each(function () {
+        var sid = 'dp' + global.uuid8();
+        $(this).addClass(sid).parent().siblings('span')
+                .find('.icon-calendar').attr({'ref': sid});
+    });
+    $('.icon-calendar').on('click', function () {
+        $('.' + $(this).attr('ref')).datepicker('show');
     });
 
 });
