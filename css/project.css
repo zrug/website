@@ -424,16 +424,6 @@ fieldset {
 	background-color: #FFE8E8;
 }
 
-.btn-history-toggle {
-	background: url(../images/btn_history.png) no-repeat;
-	position: absolute;
-	top: 232px;
-	right: 24px;
-	height: 16px;
-	width: 16px;
-	cursor: pointer;
-}
-
 #map-container {
 	width: 700px;
 	height: 300px;
