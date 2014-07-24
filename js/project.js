@@ -68,7 +68,7 @@ Project.prototype.dateToData = function (date, time) {
 Project.prototype.dataToDate = function (data) {
     var v = eval('new ' + data.replace(/\//g, ''));
     return {
-        'date': v.Format("yyyy-MM-dd"),
+        'date': v.Format("yyyy/MM/dd"),
         'time': v.Format("hh:mm:ss")
     }
 }
@@ -182,7 +182,7 @@ Project.prototype.fillContentFromJsonData = function (data) {
         }
 
     });
-    console.log('longitude:' + data.longitude + ', latitude:' + data.latitude);
+    // console.log('longitude:' + data.longitude + ', latitude:' + data.latitude);
     if (data.longitude && data.latitude) {
         var point = {
             longitude: data.longitude,
