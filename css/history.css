@@ -6,7 +6,7 @@
 .btn-history-toggle:hover {box-shadow:0px 2px 4px #999; top:141px;}
 .btn-history-toggle.historyon:hover {box-shadow:0px 1px 3px #444 inset; top:142px;}
 .content-sections>fieldset>label.historying {background-color: #cce3f9; background-image: url(../images/btn_history.png); 
-	background-repeat: no-repeat; background-position: 4% 50%; line-height: 18px; text-align: center; padding-left: 5px; 
+	background-repeat: no-repeat; background-position: 6px 6px; line-height: 18px; text-align: center; padding-left: 5px; 
 	padding-bottom: 10px; width: 134px; margin: 0px 11px 0px 0px; border-radius: 4px; color: #278ff1; cursor: pointer;}
 label.historying:hover {color: #fff; background-color: #0f6099;}
 .history-section {margin: 0 auto; min-width:500px; min-height: 200px; padding: 25px; background: #fff; border-radius: 25px; 
