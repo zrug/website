@@ -32,8 +32,8 @@ History.prototype.loadHistory = function () {
     var elID = el.attr('fieldId');
     var elText = $(this.opt.el).text();
     console.log('history at: ' + elID + ' by: ' + elText);
-    var url = global.serviceUrl + '/Projects/' 
-    	+ ($.cookie('token') || global.test_token) + '/history'
+    var url = global.serviceUrl + '/Projects/history/' 
+    	+ ($.cookie('token') || global.test_token)
     	+ '?projectID=' + this.opt.projectID 
     	+ '&fieldName=' + elID;
     var _this = this;
