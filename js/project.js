@@ -382,7 +382,7 @@ Project.prototype.install = function (key, obj) {
 $(function () {
 
     // 初始化控件
-    stateSelectorInit("district", "province", "city");
+    stateSelectorInit("province", "city", "district");
 
     // 初始化项目信息
     project = new Project({

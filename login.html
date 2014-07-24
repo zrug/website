@@ -31,7 +31,7 @@
 	.wrapper {width:1130px; height:750px; margin:0 auto; position:relative; background:transparent; border:0px solid purple;}
 	.logo {background:url(images/zpzlogo.png) no-repeat; width:462px; height:223px; left:0px; top:0px; position:absolute;}
 	.login {background:url(images/loginbg.png) no-repeat; width:350px; height:220px; right:0px; top:250px; position:absolute;}
-	.login .text {background:#fff; width:240px; height:34px; border:0px; position:absolute;
+	.login .text {background:#fff; width:230px; padding-left:10px; height:34px; border:0px; position:absolute;
 		font-size:16px; border:1px solid #ccc; border-radius:5px;}
 	.login .text.dark {background:#e8e8e8;}
 	.login .button {background:url(images/btn78x37_light.png) no-repeat; width:78px; height:37px; position:absolute; border:0px;
@@ -149,7 +149,7 @@ $(function () {
 
             	} else {
             		console.log('login failed');
-					loginError('系统错误，请检查网络连接或咨询管理员。');
+					loginError('请检查网络连接或咨询管理员。');
             	}
             },
             error: function () {

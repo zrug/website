@@ -83,7 +83,7 @@ var projectCardLoader = function (opt) {
             el.find('#district').text(data.district);
             el.attr({'ref': data.projectID});
             el.on('click', function () {
-                var surl = 'modiProject' + (global.inTests || '') + '.html?projectID=' + $(this).attr('ref');
+                var surl = 'modiProject.html?projectID=' + $(this).attr('ref');
                 location.href = surl;
             });
             return el;
@@ -123,10 +123,13 @@ var projectCardLoader = function (opt) {
             }
             if (msg && msg.d && msg.d.status && msg.d.status.statusCode == -1) {
                 console.log('THE ERROR: ' + msg.d.status.errors);
-                // location.href = "login.html";
+                alert('用户验证错误，请重新登录');
+                location.href = "login.html";
             }
         },
         error: function (msg) {
+                alert('请联系管理员');
+                location.href = "login.html";
         },
     })
 

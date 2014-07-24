@@ -28,9 +28,13 @@ $.fn.mapapi = function () {
 			    _this.setGeo(point);
 			    map.addOverlay(new BMap.Marker(point));
 			  } else {
-				alert('百度地图找不到这个地址');
+				if (_this.geo) {
+					_this.locate(map, _this.geo);
+				} else {
+
+				}
 			  }
-			}, $('#district').val());
+			}, $('#city').val());
 
 		}
 		this.locate = function (map, point) {
@@ -96,12 +100,12 @@ $.fn.mapapi = function () {
 				    			addComp.province + ', ' + addComp.city + ', ' + addComp.district + ', ' + 
 				    			addComp.street + ', ' + addComp.streetNumber)) {
 
-					        $('#district').val(addComp.province);
-					        $('#district').change();
-					        $('#province').val(addComp.city);
+					        $('#province').val(addComp.province);
 					        $('#province').change();
-					        $('#city').val(addComp.district);
+					        $('#city').val(addComp.city);
 					        $('#city').change();
+					        $('#district').val(addComp.district);
+					        $('#district').change();
 					        _this.$input.val(addComp.street + ", " + addComp.streetNumber);
 
 						    _this.setGeo(pt);
