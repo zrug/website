@@ -8,7 +8,7 @@ $.fn.mapapi = function () {
 		// };
 
 		this.setGeo = function (point) {
-			console.log('setGeo: lng['+(point.longitude || point.lng)+'] lat['+(point.latitude || point.lat)+']');
+			// console.log('setGeo: lng['+(point.longitude || point.lng)+'] lat['+(point.latitude || point.lat)+']');
 			this.geo = {
 		    	longitude: (point.longitude || point.lng),
 		    	latitude: (point.latitude || point.lat)
@@ -17,7 +17,7 @@ $.fn.mapapi = function () {
 		}
 
 		this.search = function (map, address) {
-		    console.log("BMap Search: " + address);
+		    // console.log("BMap Search: " + address);
 
 		    var myGeo = new BMap.Geocoder();
 			// 将地址解析结果显示在地图上,并调整地图视野
@@ -34,13 +34,13 @@ $.fn.mapapi = function () {
 
 		}
 		this.locate = function (map, point) {
-		    console.log("BMap Geo: " + point.longitude + ", " + point.latitude);
+		    // console.log("BMap Geo: " + point.longitude + ", " + point.latitude);
 		    var pp = new BMap.Point(point.longitude, point.latitude);
 	        map.centerAndZoom(pp, 15);
 	        map.addOverlay(new BMap.Marker(pp));
 		}
 		this.initMap = function (map) {
-			console.log("BMap init at shanghai");
+			// console.log("BMap init at shanghai");
 	        map.centerAndZoom(new BMap.Point(121.480486, 31.236193), 15);
 		}
 
@@ -66,8 +66,8 @@ $.fn.mapapi = function () {
 				map.addControl(new BMap.NavigationControl({
 					type: BMAP_NAVIGATION_CONTROL_ZOOM
 				}));
-				console.log('origAddr:' + _this.origAddr + ', address:' + _this.address);
-				console.log('geo:' + _this.geo);
+				// console.log('origAddr:' + _this.origAddr + ', address:' + _this.address);
+				// console.log('geo:' + _this.geo);
 
 			    var address = $('#district').val() + ' ' + $('#city').val() + ' ' + _this.address;
 
