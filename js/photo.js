@@ -305,7 +305,8 @@ var Photo = function (options, container) {
 				_this.photoSectionView(img);
 			}
 		}).hover(function () {
-			$(this).find('.icon-remove').show();
+			if ($(_this.el).attr('ref') == undefined)
+				$(this).find('.icon-remove').show();
 		}, function () {
 			$(this).find('.icon-remove').hide();
 		});
