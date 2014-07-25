@@ -41,6 +41,12 @@ body {background:#F0EEEE url(../images/zpzbg03f.jpg) repeat-y 50% 0%; font-famil
 .porject-card #province_city {position:absolute; left:90px; top:215px; text-align:right; width:166px;}
 .endOfPage {display:none;}
 
+.project-card-split { clear: both; position: relative; padding-top: 10px; }
+.split-content { border-top: 2px solid #666; height: 20px; width: 1068px; }
+.split-content p { text-align: right; line-height: 25px; padding: 0px 10px; margin-top: -14px; display: inline-block; 
+	float: right; background: #f4f4f4; border: 1px solid #666; box-shadow: 2px 2px 4px #666; font-size: 12px; 
+	border-radius: 0px; color: #666; }
+
 .button {width:120px; height:44px; border-radius:5px; cursor:pointer;}
 .button.green {border:1px solid #9F9; background:#EFE;}
 .button.green:hover {background:#AFA;}
