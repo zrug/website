@@ -373,13 +373,13 @@ fieldset {
 	color: #fff; 
 	cursor: pointer; 
 }
-.functions .button: hover {
+.functions .button:hover {
 	background: url(../images/btn93x31_gray_dark.png);
 }
 .functions .button.active {
 	background: url(../images/btn93x31_light.png);
 }
-.functions .button.active: hover {
+.functions .button.active:hover {
 	background: url(../images/btn93x31_dark.png);
 }
 

@@ -35,16 +35,18 @@
 <script src="js/poping.js"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=0wvVIIyreUp42Mi7W329LG2F"></script>
 
-<script src="js/history.js"></script>
 <script src="js/contact.js"></script>
 <script src="js/photo.js"></script>
 <script src="js/project.js"></script>
+<script src="js/history.js"></script>
 
 <script type="text/javascript">
 $(function () {
     if (global.QueryString.newProject != "1") {
         project.modify();
+        console.log('modify ing project');
     } else {
+        $('.btn-history-toggle').off('click').removeClass('btn-history-toggle').addClass('btn-history-disable');
         console.log('new ing project');
     }
     console.log('user: ' + $.cookie('userID') + ' token: ' + ($.cookie('token') ? '(c)'+$.cookie('token') : '(o)'+global.test_token) );

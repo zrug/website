@@ -50,7 +50,6 @@ var Project = function (options) {
 
 Project.prototype.modify = function () {
     this.inModify = true;
-    console.log('modify ing project');
 }
 Project.prototype.dateToData = function (date, time) {
     if (date) {
