@@ -37,6 +37,10 @@ $(function () {
     }).on('click', function () {
         $(this).select();
     }).focus().val(decodeURIComponent(global.QueryString.q || ''));
+
+    $('.relogin').on('click', function () {
+        location.href = "login.html";
+    });
 });
 
 var projectCardLoader = function (opt) {
@@ -126,6 +130,7 @@ var projectCardLoader = function (opt) {
                     console.log('No results');
                 } else if (msg.d.status.errors == "Token is invaild") {
                     alert('用户验证错误，请重新登录');
+                    $('.relogin').fadeIn();
                     // location.href = "login.html";
                 } else {
                     console.log('THE ERROR: ' + msg.d.status.errors);

@@ -45,6 +45,14 @@ body {background:#F0EEEE url(../images/zpzbg03f.jpg) repeat-y 50% 0%; font-famil
 .button.green {border:1px solid #9F9; background:#EFE;}
 .button.green:hover {background:#AFA;}
 
+.functions {position: absolute; width: 100%; top: 300px; display: none;}
+.functions .button {width: 93px; height: 31px; position: relative;background: url(images/btn93x31_gray_light.png); 
+    margin: 0px auto 0px auto;border: 0px; text-align: center;line-height: 30px; font-size: 16px; 
+    color: #fff; cursor: pointer;}
+.functions .button:hover {background: url(images/btn93x31_gray_dark.png);}
+.functions .button.active {background: url(images/btn93x31_light.png);}
+.functions .button.active:hover {background: url(images/btn93x31_dark.png);}
+
 .clear {clear:both; height:0; display:block;}
 
 .blue {color:#278ff1;}
