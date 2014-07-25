@@ -92,25 +92,19 @@ var projectCardLoader = function (opt) {
             });
             return el;
         };
-        var split = function () {
-            var pageCount = Math.round(datas.status.totalCount / global.scrollingLoader.pageSize);
-            var pageRecordStartAt = global.scrollingLoader.index * global.scrollingLoader.pageSize + 1;
-            var pageRecordEndAt = (global.scrollingLoader.index+1) * global.scrollingLoader.pageSize;
-            pageRecordEndAt = pageRecordEndAt > datas.status.totalCount ? datas.status.totalCount : pageRecordEndAt;
+        var pageCount = Math.round(datas.status.totalCount / global.scrollingLoader.pageSize);
+        var pageRecordStartAt = global.scrollingLoader.index * global.scrollingLoader.pageSize + 1;
+        var pageRecordEndAt = (global.scrollingLoader.index+1) * global.scrollingLoader.pageSize;
+        pageRecordEndAt = pageRecordEndAt > datas.status.totalCount ? datas.status.totalCount : pageRecordEndAt;
 
-            return "<div class='project-card-split'><div class='split-content'><p>" +
-                "第 "+pageRecordStartAt+" - "+pageRecordEndAt+" 条，" + 
-                "第 "+(global.scrollingLoader.index+1)+" / "+pageCount+" 页，" + 
-                "共 "+datas.status.totalCount+" 条" +
-                "</p></div></div>";
-        }
+
+        console.log( "第["+(global.scrollingLoader.index+1)+"]页，共["+pageCount+"]页，\
+第["+pageRecordStartAt+"]-["+pageRecordEndAt+"]条，共["+datas.status.totalCount+"]条" );
         
         // $('.content dl dd').remove();
         $(datas.data).each(function () {
             $('.content dl').append(card(this));
         });
-        $('.content dl').append(split());
-
         $('.endOfPage').show();
     }
 
